@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <title>폼 유효성 검사 페이지</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Sass와 Native Js 기반의 Css 프레임워크 프로젝트</title>
+    <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/twCom.min.css">
+    <link rel="stylesheet" href="./css/formcheck.css">
+    <link rel="shortcut icon" href="./image/favicon.ico">
+
+  </head>
+  <body>
+    <main style="height : 100vh; position:relative">
+      <img src="./image/validbackground.jpg" style="position : fixed; width:100%; height:100%; pointer-events: none; z-index:-1;">
+
+
+        <div class="card col s4 formcheck" style="">
+           <div class="card-content row">
+             <div style="font-weight:bold; font-size:1.5rem;">폼 유효성 검사</div>
+             <div class="tw-input-field col s12" >
+                 <input type="text" id="valid1" class="validate" name="name"  data-regexp="mail">
+                 <label for="valid1" class="input-field-label" >이메일</label>
+               <hr class="focusline">
+             </div>
+
+             <div class="tw-input-field col s12" >
+                 <input type="text" id="valid1" name="name" >
+                 <label for="valid1" class="input-field-label" >아무 유효성검사 없을때</label>
+               <hr class="focusline">
+             </div>
+
+          </div>
+        </div>
+
+    </main>
+    <script type="text/javascript" src="./devjs/lib/hammer.js"></script>
+    <script type="text/javascript" src="./devjs/lib/TweenLite.js"></script>
+    <script type="text/javascript" src="./devjs/twCom.min.js"></script>
+  </body>
+</html>

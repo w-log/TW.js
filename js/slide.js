@@ -74,7 +74,8 @@
 
       slide.prototype.init = function(selector, option){
         this._Element = document.querySelector(selector);
-        this._slides = this._Element.getElementsByClassName("slide");
+
+        this._slides = this._Element ? this._Element.getElementsByClassName("slide") : null ;
         this.duration = 1500;
         if ( this._slides !== null && this._slides.length > 0 ){
           this.setDisplay();

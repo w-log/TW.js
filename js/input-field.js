@@ -1,6 +1,8 @@
 (function () {
     "use strict";
-
+    var regExpObj = {
+      "mail" : /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+    };
 
       function TextField() {
           // input field 생성자
@@ -14,7 +16,15 @@
       }
 
 
-
+      function validation(element){
+          var textValue = element.value || null;
+          var regType = element.getAttribute("data-regexp");
+          var command = false;
+          if ( textValue  && regType ){
+              command = regExpObj[regType].test(textValue);
+          }
+          return command;
+      }
 
       TextField.prototype.Init = function(){
           var text_fields = this.Elements;
@@ -24,13 +34,35 @@
           }
       };
       TextField.prototype.field_focus = function(){
+        var self = this;
         twCom.fn.addClass(this , "active");
       };
       TextField.prototype.field_blur = function(){
-        twCom.fn.removeClass(this,"active");
-        //중첩 3항 연산자 text_field안에 value가 존재하면 valid라는 class 를 추가하고 value가 존재하지않으면 valid 클래스를 제거해야함
-        //즉 text_field 내에 입력값이 존재하면 valid 라는 class를 추가하고 없으면 field 내에 valid 라는 클래스를 찾아서 있으면 제거함
-        (this.value.length > 0 ? twCom.fn.addClass(this,"valid") : ( twCom.fn.hasClass(this,"valid") ? twCom.fn.removeClass(this,"valid") : "" ));
+        var self = this;
+        var validate = twCom.fn.hasClass(self ,"validate");
+        var match = false;
+        if ( validate ){
+          match = validation(self);
+        }
+
+        if ( self.value.length > 0 ){
+          twCom.fn.addClass(self,"dirty");
+        }else{
+          twCom.fn.hasClass(self,"valid") ? twCom.fn.removeClass(self,"valid") : '';
+          twCom.fn.hasClass(self,"notvalid") ? twCom.fn.removeClass(self,"notvalid") : '';
+          twCom.fn.hasClass(self,"dirty") ? twCom.fn.removeClass(self,"dirty") : '';
+        }
+
+        if ( match && twCom.fn.hasClass(self,"dirty") ){
+          twCom.fn.hasClass(self,"notvalid") ? twCom.fn.removeClass(self,"notvalid") : '';
+          twCom.fn.addClass(self,"valid");
+        }else if( validate && twCom.fn.hasClass(self,"dirty") ){
+          twCom.fn.hasClass(self,"valid") ? twCom.fn.removeClass(self,"valid") : '';
+          twCom.fn.addClass(self,"notvalid");
+        }
+
+
+        twCom.fn.removeClass(self,"active");
 
       };
 
