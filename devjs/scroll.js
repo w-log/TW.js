@@ -4,7 +4,7 @@
     function easeOut(t, b, c, d) {
     	var ts=(t/=d)*t;
     	var tc=ts*t;
-    	return b+c*(0.899999999999998*tc*ts + -4.35*ts*ts + 8.6*tc + -8.7*ts + 4.55*t);
+    	return b+c*(0.9*tc*ts + -4.35*ts*ts + 8.6*tc + -8.7*ts + 4.55*t);
     }
 
 
@@ -40,7 +40,7 @@
     // move 함수 호출
     move(val);
     // 현재 애니메이션 시간이 druation을 초과했는지 확인 현재시간이 < 애니메이션 시간보다 작으면 애니메이션 진행 초과시에는 콜백함수 호출
-    if (currentTime < duration) {
+    if (currentTime <= duration) {
       requestAnimFrame(animateScroll);
     } else {
       if (callback && typeof(callback) === 'function') {
@@ -56,6 +56,7 @@
     var scrollBtn_2 = document.getElementById("scroll-down-2");
     var scrollBtn_3 = document.getElementById("scroll-down-3");
     var scrollBtn_4 = document.getElementById("scroll-up");
+
     scrollBtn_1.setAttribute("data-scrollTarget", "skill");
     scrollBtn_2.setAttribute("data-scrollTarget", "introduction");
     scrollBtn_3.setAttribute("data-scrollTarget", "resume");
@@ -73,6 +74,7 @@
     scrollBtn_2.addEventListener("click",clickToscroll);
     scrollBtn_3.addEventListener("click",clickToscroll);
     scrollBtn_4.addEventListener("click",clickToscroll);
+
     window.addEventListener("scroll", function(e){
       //  if ( this.scrollY === 0 ){ return false; }
         var header = document.getElementsByTagName("header")[0];

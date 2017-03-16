@@ -12,27 +12,8 @@
 :-ms-input-placeholder {
   color: grey; }
 
-html {
-  font-size: 12px; }
-
-#logmodal {
-  width: 95%; }
-
-@media only screen and (min-width: 720px) {
-  html {
-    font-size: 14px; }
-  #logmodal {
-    width: 55%; } }
-
-@media only screen and (min-width: 1024px) {
-  html {
-    font-size: 16px; }
-  #logmodal {
-    width: 30%; } }
-
 .input-field-label {
   bottom: 0;
-  color: rgba(0, 0, 0, 0.26);
   font-size: 1rem;
   pointer-events: none;
   position: absolute;
@@ -98,6 +79,7 @@ input[type=search] {
   box-shadow: none;
   height: 3rem;
   font-size: 1rem;
+  color: inherit;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -168,7 +150,7 @@ input[type=search] {
   input[type=tel].valid + .input-field-label,
   input[type=number].valid + .input-field-label,
   input[type=search].valid + .input-field-label {
-    color: cyan; }
+    color: #76ff03; }
     input:not([type]).valid + .input-field-label + hr.focusline,
     input[type=text].valid + .input-field-label + hr.focusline,
     input[type=password].valid + .input-field-label + hr.focusline,
@@ -181,33 +163,33 @@ input[type=search] {
     input[type=tel].valid + .input-field-label + hr.focusline,
     input[type=number].valid + .input-field-label + hr.focusline,
     input[type=search].valid + .input-field-label + hr.focusline {
-      background: cyan; }
-  input:not([type]).notvalid + .input-field-label,
-  input[type=text].notvalid + .input-field-label,
-  input[type=password].notvalid + .input-field-label,
-  input[type=email].notvalid + .input-field-label,
-  input[type=url].notvalid + .input-field-label,
-  input[type=time].notvalid + .input-field-label,
-  input[type=date].notvalid + .input-field-label,
-  input[type=datetime].notvalid + .input-field-label,
-  input[type=datetime-local].notvalid + .input-field-label,
-  input[type=tel].notvalid + .input-field-label,
-  input[type=number].notvalid + .input-field-label,
-  input[type=search].notvalid + .input-field-label {
-    color: red; }
-    input:not([type]).notvalid + .input-field-label + hr.focusline,
-    input[type=text].notvalid + .input-field-label + hr.focusline,
-    input[type=password].notvalid + .input-field-label + hr.focusline,
-    input[type=email].notvalid + .input-field-label + hr.focusline,
-    input[type=url].notvalid + .input-field-label + hr.focusline,
-    input[type=time].notvalid + .input-field-label + hr.focusline,
-    input[type=date].notvalid + .input-field-label + hr.focusline,
-    input[type=datetime].notvalid + .input-field-label + hr.focusline,
-    input[type=datetime-local].notvalid + .input-field-label + hr.focusline,
-    input[type=tel].notvalid + .input-field-label + hr.focusline,
-    input[type=number].notvalid + .input-field-label + hr.focusline,
-    input[type=search].notvalid + .input-field-label + hr.focusline {
-      background: red; }
+      background: #76ff03; }
+  input:not([type]).invalid + .input-field-label,
+  input[type=text].invalid + .input-field-label,
+  input[type=password].invalid + .input-field-label,
+  input[type=email].invalid + .input-field-label,
+  input[type=url].invalid + .input-field-label,
+  input[type=time].invalid + .input-field-label,
+  input[type=date].invalid + .input-field-label,
+  input[type=datetime].invalid + .input-field-label,
+  input[type=datetime-local].invalid + .input-field-label,
+  input[type=tel].invalid + .input-field-label,
+  input[type=number].invalid + .input-field-label,
+  input[type=search].invalid + .input-field-label {
+    color: #d50000; }
+    input:not([type]).invalid + .input-field-label + hr.focusline,
+    input[type=text].invalid + .input-field-label + hr.focusline,
+    input[type=password].invalid + .input-field-label + hr.focusline,
+    input[type=email].invalid + .input-field-label + hr.focusline,
+    input[type=url].invalid + .input-field-label + hr.focusline,
+    input[type=time].invalid + .input-field-label + hr.focusline,
+    input[type=date].invalid + .input-field-label + hr.focusline,
+    input[type=datetime].invalid + .input-field-label + hr.focusline,
+    input[type=datetime-local].invalid + .input-field-label + hr.focusline,
+    input[type=tel].invalid + .input-field-label + hr.focusline,
+    input[type=number].invalid + .input-field-label + hr.focusline,
+    input[type=search].invalid + .input-field-label + hr.focusline {
+      background: #d50000; }
   input:not([type]).active + .input-field-label,
   input[type=text].active + .input-field-label,
   input[type=password].active + .input-field-label,

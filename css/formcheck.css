@@ -9,8 +9,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.7);
-  text-align: center; }
+  text-align: center;
+  border: 1px solid black; }
 
 /*태블릿 미디어쿼리*/
 /*스마트폰 미디어쿼리*/

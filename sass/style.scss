@@ -6,12 +6,22 @@ $maxcol : 12;
 html{
   box-sizing: border-box;
   font-family: 'Iropke Batang', serif;
+  font-size: 12px;
 }
-
 body{
   margin: 0;
 }
 
+@media only screen and (min-width : 720px) {
+  html{
+      font-size: 14px;
+  }
+}
+@media only screen and (min-width : 1024px) {
+  html{
+      font-size: 16px;
+  }
+}
 
 .row {
   margin-left: auto;
