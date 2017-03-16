@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="./css/formcheck.css">
     <script>
       function check(e){
-          console.log(e);
+          // console.log(e);
           var form = document.getElementsByTagName("form")[0];
           var validateElement = form.querySelectorAll(".validate");
           var invalidElement = form.querySelectorAll(".validate.invalid");
           var validElement = form.querySelectorAll(".validate.valid");
           var novalidateElement = form.querySelectorAll("input:not(.validate)");
-          console.log(validateElement);
-          console.log(novalidateElement);
+
+          twCom.fn.toast("유효성 검증 input 총 개 :" + validateElement.length + " ", 5000);
       }
     </script>
   </head>

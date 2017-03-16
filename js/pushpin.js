@@ -67,7 +67,6 @@ var pushpin = function(){
            한마디로 현재위치가 대상엘리먼트 안에 존재할때에 fixed는 유효하다.
            이 경우 push-pin 클래스가 있을시에 클래스를 제거하고 fixed라는 클래스를 추가한다. fixed클래스는 css position을 fixed로 변경한다.
            */
-           console.log(top);
           if ( top <= 1 && markCheck > 0 ){
               element_css.setCss("top", "0px" );
               twCom.fn.addClass(content, "show");
