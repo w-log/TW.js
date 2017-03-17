@@ -50,6 +50,9 @@
   .view-icon.fb-icon {
     color: #5C6BC0; }
 
+.poliocard {
+  margin: 0.5rem; }
+
 #aboutModal .profile > img {
   width: 80px;
   height: 80px;

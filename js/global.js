@@ -168,7 +168,7 @@ if( typeof window.twCom === "undefined"){
               cssObject["margin-top"] = "-3rem";
               self.cssObject(toast).cssEach(cssObject);
 
-              
+
               setTimeout(function(){
                 if(toast.parentElement !== null){
                   toast.parentElement.removeChild(toast);

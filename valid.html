@@ -13,20 +13,21 @@
     <link rel="stylesheet" href="./css/formcheck.css">
     <script>
       function check(e){
-          // console.log(e);
           var form = document.getElementsByTagName("form")[0];
           var validateElement = form.querySelectorAll(".validate");
           var invalidElement = form.querySelectorAll(".validate.invalid");
           var validElement = form.querySelectorAll(".validate.valid");
           var novalidateElement = form.querySelectorAll("input:not(.validate)");
-
-          twCom.fn.toast("유효성 검증 input 총 개 :" + validateElement.length + " ", 5000);
+          var valueElement = form.querySelectorAll("input:not(.dirty)");
+          twCom.fn.toast("유효성 검증이 필요한 input 총 개 : " + validateElement.length + " ", 5000);
+          twCom.fn.toast("통과한 유효성 검증 input 총 개 : " + validElement.length + " ", 5000);
+          twCom.fn.toast("통과하지못한 유효성 검증 input 총 개 : " + invalidElement.length + " ", 5000);
+          twCom.fn.toast("값이 없는 input : " + valueElement.length + " ", 5000);
       }
     </script>
   </head>
   <body>
     <main style="height : 100vh; position:relative;">
-      <!-- <img src="./image/validbackground.jpg" style="position : fixed; width:100%; height:100%; pointer-events: none; z-index:-1;"> -->
 
       <form>
         <div class="card col s4 formcheck black-text" style="">
@@ -61,6 +62,8 @@
                <hr class="focusline">
              </div>
              <a class="tw-btn-clear waves-effect col s10 push-s1" data-waveColor="white" onclick="check(event)">전송</a>
+             <div class="col s12" style="font-weight:bold; margin-top:1rem;">현재 개인프로젝트로 개발중인 프론트엔드 프레임워크로 간단한 유효성검증을 간단하게 사용 할 수있게 개발해봤습니다.</div>
+             <div class="col s12" style="font-weight:bold; margin-top:1rem; cursor:pointer;" ><span class="gitUrl light-blue-text" onclick="javascript:window.open('https://github.com/tawon2137/TW.js')" ><i class="fa fa-github"></i>Git project URL</span></div>
           </div>
         </div>
       </form>
