@@ -19,4 +19,4 @@
   - javascript : ES5,
   - Build : Webpack (간단한 기능만 사용)
   - 참고한 오픈소스 및 사이트 :  [Metarialize Css Framework](http://materializecss.com/), [W3cSchool](https://www.w3schools.com/)
-  - 사용한 오픈소스 :  [javascript 기반 애니메이션 라이브러리 TweenLite.js](https://greensock.com/tweenlite) , [Touch Event 라이브러리 hammer.js](https://greensock.com/tweenlite)
+  - 사용한 오픈소스 :  [javascript 기반 애니메이션 라이브러리 TweenLite.js](https://greensock.com/tweenlite) , [Touch Event 라이브러리 hammer.js](http://hammerjs.github.io/)
