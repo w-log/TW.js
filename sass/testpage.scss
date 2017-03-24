@@ -1,0 +1,102 @@
+@import "./mixin.scss";
+
+
+
+
+.page-font{
+  font-family: 'Baloo Bhaina', cursive;
+}
+
+
+header{
+  padding-left:250px;
+}
+main {
+  padding-left:250px;
+}
+.header-text{
+  font-weight: bold;
+  font-size: 2rem;
+  margin : 1rem 0rem;
+}
+
+.content-text{
+  font-weight: bold;
+  margin : 0.5rem 0rem;
+}
+pre{
+  width: 100%;
+  position: relative;
+  background-color: white !important;
+  box-shadow: 1px 1px 1px 3px rgba(0,0,0,0.5) inset;
+  border-radius: 5px;
+}
+pre[class*="language-"]:before {
+  position: absolute;
+  padding: 1px 5px;
+  background: #e8e6e3;
+  top: 0;
+  left: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #555;
+  content: attr(class);
+  font-size: .9rem;
+  border: solid 1px rgba(51,51,51,0.12);
+  border-top: none;
+  border-left: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width : 1366px) {
+    #mysideNav{
+      &::after{
+        position: fixed;
+        height: 20px;
+        line-height: 20px;
+        width: 230px;
+        text-align: center;
+        top:0;
+        bottom: 0;
+        left : 260px;
+        background: rgba(0,0,0,0.5);
+        color : white;
+        font-weight: bold;
+        border-radius: 15px;
+        content: "끝을 당겨보세요.(mobile과 태블릿에서만 !)";
+        pointer-events: none;
+        @include animate("afterMove 0.75s infinite");
+      }
+    }
+
+    header{
+      padding-left:0;
+    }
+    main {
+      padding-left:0;
+    }
+
+
+
+
+
+}
+
+@include keyframesubfix("afterMove","{50% {transform:translateX(-5px);}, 100%{transform:translateY(0px);}}");

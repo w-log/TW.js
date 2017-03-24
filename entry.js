@@ -1,4 +1,6 @@
+require("./js/lib/hammer");
 require('./js/global');
+require("./js/animate");
 require('./js/input-field');
 require('./js/modal');
 require('./js/waves');

@@ -23,11 +23,20 @@
   transform-origin: 0 0;
   white-space: nowrap;
   text-align: left;
+  font-weight: bold;
+  color: grey;
   -webkit-transition: color 0.2s, transform 0.2s;
   -moz-transition: color 0.2s, transform 0.2s;
   -o-transition: color 0.2s, transform 0.2s;
   -ms-transition: color 0.2s, transform 0.2s;
   transition: color 0.2s, transform 0.2s; }
+  .input-field-label.fixed {
+    -webkit-transform: translateY(-1.5rem) scale(0.7);;
+    -moz-transform: translateY(-1.5rem) scale(0.7);;
+    -o-transform: translateY(-1.5rem) scale(0.7);;
+    -ms-transform: translateY(-1.5rem) scale(0.7);;
+    transform: translateY(-1.5rem) scale(0.7);;
+    font-weight: bold; }
 
 .tw-input-field {
   position: relative;

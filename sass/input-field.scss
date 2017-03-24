@@ -31,7 +31,13 @@
     transform-origin: 0 0;
     white-space: nowrap;
     text-align: left;
+    font-weight: bold;
+    color:grey;
     @include transition("color 0.2s, transform 0.2s");
+    &.fixed{
+      @include transform("translateY(-1.5rem) scale(0.7);");
+      font-weight: bold;
+    }
 }
 
 .tw-input-field{
