@@ -324,8 +324,10 @@ input[type=search] {
   -o-transform: scaleY(0.7);
   -ms-transform: scaleY(0.7);
   transform: scaleY(0.7);
-  border-radius: 5px; }
+  border-radius: 2px;
+  color: #00E5FF; }
   .tw-dropdown li {
+    font-weight: bold;
     text-transform: none;
     list-style-type: none;
     min-height: 2.5rem;

@@ -1719,7 +1719,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
 
             element.appendChild(effectElement);
             // wave color 설정
-            var color = element.getAttribute("data-waveColor") || "white2";
+            var color = element.getAttribute("data-waveColor") || "white";
 
             twCom.fn.addClass(effectElement, waves_colorList[color]);
 

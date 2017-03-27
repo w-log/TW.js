@@ -28,6 +28,9 @@
   @include userselect("none");
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
+  &:hover:not(.tw-btn-clear){
+    box-shadow:$button-hover-shadow;
+  }
 }
 
 

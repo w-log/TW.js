@@ -192,7 +192,9 @@ input[type=search] {
   opacity: 0;
   @include transform(scaleY(0.7));
   border-radius:$dropdown-box-radius;
+  color:#00E5FF;
   & li{
+      font-weight: bold;
       text-transform : none;
       list-style-type: none;
       min-height: 2.5rem;
