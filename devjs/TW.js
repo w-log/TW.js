@@ -990,7 +990,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
         var shadowELement = createShadow(sidenav_element);
 
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
+        var width = sideEle_css.getCss("width").split("px")[0];
         width = Number(width);
         var x = (e.center.x - width);
 
@@ -1023,7 +1023,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
     function swipeEnd(e, element) {
         var sidenav_element = getSidenavElement(e, element);
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
+        var width = sideEle_css.getCss("width").split("px")[0];
         var tx = sideEle_css.getCss("transform").split(",")[4];
         var currentX = Number(width) + Number(tx);
 
@@ -1038,7 +1038,6 @@ window.addEventListener("DOMContentLoaded", function(e) {
     function tap(e, element) {
         var sidenav_element = getSidenavElement(e, element);
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
 
         var shadowElement = document.getElementById("shadow-area");
         if (shadowElement === null) {
@@ -1137,8 +1136,8 @@ window.addEventListener("DOMContentLoaded", function(e) {
         }
     }
     var sideNav = {
-        duration: 150,
-
+        duration: 300,
+        easing : "cubic-bezier(0.23, 1, 0.32, 1)",
         open: function(e, element) {
             var sidenavElement = getSidenavElement(e, element);
             var cssObject = {},
@@ -1169,11 +1168,10 @@ window.addEventListener("DOMContentLoaded", function(e) {
             cssObject['transition-duration'] = sideNav.duration + 'ms';
 
             //easing
-            var easing = "cubic-bezier(0.17, 0.67, 0.79, 1)";
-            cssObject['-webkit-transition-timing-function'] = easing;
-            cssObject['-moz-transition-timing-function'] = easing;
-            cssObject['-o-transition-timing-function'] = easing;
-            cssObject['transition-timing-function'] = easing;
+            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject['-o-transition-timing-function'] = sideNav.easing;
+            cssObject['transition-timing-function'] = sideNav.easing;
 
 
 
@@ -1186,10 +1184,10 @@ window.addEventListener("DOMContentLoaded", function(e) {
             cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
             cssObject2['transition-duration'] = sideNav.duration + 'ms';
 
-            cssObject2['-webkit-transition-timing-function'] = easing;
-            cssObject2['-moz-transition-timing-function'] = easing;
-            cssObject2['-o-transition-timing-function'] = easing;
-            cssObject2['transition-timing-function'] = easing;
+            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject2['-o-transition-timing-function'] = sideNav.easing;
+            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget_css = twCom.fn.cssObject(dragTarget);
@@ -1238,11 +1236,10 @@ window.addEventListener("DOMContentLoaded", function(e) {
             cssObject['transition-duration'] = sideNav.duration + 'ms';
 
             //easing
-            var easing = "cubic-bezier(0.17, 0.67, 0.79, 1)";
-            cssObject['-webkit-transition-timing-function'] = easing;
-            cssObject['-moz-transition-timing-function'] = easing;
-            cssObject['-o-transition-timing-function'] = easing;
-            cssObject['transition-timing-function'] = easing;
+            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject['-o-transition-timing-function'] = sideNav.easing;
+            cssObject['transition-timing-function'] = sideNav.easing;
 
 
             cssObject2["opacity"] = 0;
@@ -1252,10 +1249,10 @@ window.addEventListener("DOMContentLoaded", function(e) {
             cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
             cssObject2['transition-duration'] = sideNav.duration + 'ms';
 
-            cssObject2['-webkit-transition-timing-function'] = easing;
-            cssObject2['-moz-transition-timing-function'] = easing;
-            cssObject2['-o-transition-timing-function'] = easing;
-            cssObject2['transition-timing-function'] = easing;
+            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject2['-o-transition-timing-function'] = sideNav.easing;
+            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget = document.getElementById("drag-target");
@@ -1708,8 +1705,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
     var Effect = {
         duration: 750,
 
-        show: function(e, ele) {
-
+        show: function(e, ele) {  
             var element = ele || this;
 
 
@@ -1772,9 +1768,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
         },
 
         hide: function(e) {
-
             var ele = this;
-
             //엘리먼트에서 최근 생성된 wave 이펙트 엘리먼트 찾기
             var ripple = null;
             var ripples = ele.getElementsByClassName('wave');
@@ -1836,19 +1830,19 @@ window.addEventListener("DOMContentLoaded", function(e) {
         if (element !== null) {
             Effect.show(e, element);
             if ("ontouchend" in window) {
-                element.addEventListener('touchend', Effect.hide, false);
-                element.addEventListener('touchcancel', Effect.hide, false);
+                element.addEventListener('touchend', Effect.hide);
+                element.addEventListener('touchcancel', Effect.hide);
             }
-            element.addEventListener('mouseup', Effect.hide, false);
-            element.addEventListener('mouseleave', Effect.hide, false);
+            element.addEventListener('mouseup', Effect.hide);
+            element.addEventListener('mouseleave', Effect.hide);
         }
     }
 
     window.addEventListener("DOMContentLoaded", function(e) {
         if ('ontouchstart' in window) {
-            document.body.addEventListener('touchstart', showEffect, false);
+            document.body.addEventListener('touchstart', showEffect);
         } else {
-            document.body.addEventListener('mousedown', showEffect, false);
+            document.body.addEventListener('mousedown', showEffect);
         }
     });
 })();

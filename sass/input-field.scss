@@ -1,23 +1,23 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 @import "./function.scss";
-//input
-::-webkit-input-placeholder {
-  color: $placeholder-text-color
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  color: $placeholder-text-color;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-  color: $placeholder-text-color;
-}
-
-:-ms-input-placeholder {
-  color: $placeholder-text-color;
-}
-
+// //input
+// ::-webkit-input-placeholder {
+//   color: $placeholder-text-color
+// }
+//
+// :-moz-placeholder { /* Firefox 18- */
+//   color: $placeholder-text-color;
+// }
+//
+// ::-moz-placeholder {  /* Firefox 19+ */
+//   color: $placeholder-text-color;
+// }
+//
+// :-ms-input-placeholder {
+//   color: $placeholder-text-color;
+// }
+//
 
 
 .input-field-label{
@@ -31,7 +31,6 @@
     transform-origin: 0 0;
     white-space: nowrap;
     text-align: left;
-    font-weight: bold;
     color:grey;
     @include transition("color 0.2s, transform 0.2s");
     &.fixed{
@@ -192,7 +191,7 @@ input[type=search] {
   opacity: 0;
   @include transform(scaleY(0.7));
   border-radius:$dropdown-box-radius;
-  color:#00E5FF;
+  color:#283593;
   & li{
       font-weight: bold;
       text-transform : none;

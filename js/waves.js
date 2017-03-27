@@ -40,8 +40,7 @@
     var Effect = {
         duration: 750,
 
-        show: function(e, ele) {
-
+        show: function(e, ele) {  
             var element = ele || this;
 
 
@@ -104,9 +103,7 @@
         },
 
         hide: function(e) {
-
             var ele = this;
-
             //엘리먼트에서 최근 생성된 wave 이펙트 엘리먼트 찾기
             var ripple = null;
             var ripples = ele.getElementsByClassName('wave');
@@ -168,19 +165,19 @@
         if (element !== null) {
             Effect.show(e, element);
             if ("ontouchend" in window) {
-                element.addEventListener('touchend', Effect.hide, false);
-                element.addEventListener('touchcancel', Effect.hide, false);
+                element.addEventListener('touchend', Effect.hide);
+                element.addEventListener('touchcancel', Effect.hide);
             }
-            element.addEventListener('mouseup', Effect.hide, false);
-            element.addEventListener('mouseleave', Effect.hide, false);
+            element.addEventListener('mouseup', Effect.hide);
+            element.addEventListener('mouseleave', Effect.hide);
         }
     }
 
     window.addEventListener("DOMContentLoaded", function(e) {
         if ('ontouchstart' in window) {
-            document.body.addEventListener('touchstart', showEffect, false);
+            document.body.addEventListener('touchstart', showEffect);
         } else {
-            document.body.addEventListener('mousedown', showEffect, false);
+            document.body.addEventListener('mousedown', showEffect);
         }
     });
 })();

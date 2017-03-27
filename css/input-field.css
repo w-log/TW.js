@@ -1,17 +1,3 @@
-::-webkit-input-placeholder {
-  color: grey; }
-
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: grey; }
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: grey; }
-
-:-ms-input-placeholder {
-  color: grey; }
-
 .input-field-label {
   bottom: 0;
   font-size: 1rem;
@@ -23,7 +9,6 @@
   transform-origin: 0 0;
   white-space: nowrap;
   text-align: left;
-  font-weight: bold;
   color: grey;
   -webkit-transition: color 0.2s, transform 0.2s;
   -moz-transition: color 0.2s, transform 0.2s;
@@ -325,7 +310,7 @@ input[type=search] {
   -ms-transform: scaleY(0.7);
   transform: scaleY(0.7);
   border-radius: 2px;
-  color: #00E5FF; }
+  color: #283593; }
   .tw-dropdown li {
     font-weight: bold;
     text-transform: none;

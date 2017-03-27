@@ -32,7 +32,6 @@
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%);
-  background-color: white;
   z-index: 999;
   // overflow: auto;
   backface-visibility: hidden;
@@ -40,14 +39,15 @@
     & .menu {
         cursor: pointer;
         padding: 0 1rem;
-        text-decoration: none;
+        color : inherit;
         height: $sidenav-col-height;
         line-height: $sidenav-col-height;
         display: block;
         font-weight: bold;
         @include transition(color 0.2s ease-in);
+        text-decoration: none;
         &:hover{
-          background: rgba(0,0,0,0.05);
+          background: rgba(0,0,0,0.15);
         }
     }
     & #closeNav {

@@ -31,14 +31,13 @@
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%);
-  background-color: white;
   z-index: 999;
   backface-visibility: hidden;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.34), 0 1px 5px 0 rgba(0, 0, 0, 0.32), 0 3px 1px -2px rgba(0, 0, 0, 0.4); }
   .tw-sideNav .menu {
     cursor: pointer;
     padding: 0 1rem;
-    text-decoration: none;
+    color: inherit;
     height: 40px;
     line-height: 40px;
     display: block;
@@ -47,9 +46,10 @@
     -moz-transition: color 0.2s ease-in;
     -o-transition: color 0.2s ease-in;
     -ms-transition: color 0.2s ease-in;
-    transition: color 0.2s ease-in; }
+    transition: color 0.2s ease-in;
+    text-decoration: none; }
     .tw-sideNav .menu:hover {
-      background: rgba(0, 0, 0, 0.05); }
+      background: rgba(0, 0, 0, 0.15); }
   .tw-sideNav #closeNav {
     left: 0;
     position: absolute;

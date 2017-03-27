@@ -298,7 +298,7 @@
   var shadow = {
     "black": "#000000",
     "white": "#FFFFFF",
-    "transparent": "N/A"
+    "transparent": "투명"
   };
   var colorList = {
       "red" : red,

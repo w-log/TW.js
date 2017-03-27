@@ -27,7 +27,7 @@
         var shadowELement = createShadow(sidenav_element);
 
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
+        var width = sideEle_css.getCss("width").split("px")[0];
         width = Number(width);
         var x = (e.center.x - width);
 
@@ -60,7 +60,7 @@
     function swipeEnd(e, element) {
         var sidenav_element = getSidenavElement(e, element);
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
+        var width = sideEle_css.getCss("width").split("px")[0];
         var tx = sideEle_css.getCss("transform").split(",")[4];
         var currentX = Number(width) + Number(tx);
 
@@ -75,7 +75,6 @@
     function tap(e, element) {
         var sidenav_element = getSidenavElement(e, element);
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
-        var width = sidenav_element.getAttribute("data-width") || Option.width;
 
         var shadowElement = document.getElementById("shadow-area");
         if (shadowElement === null) {
@@ -174,8 +173,8 @@
         }
     }
     var sideNav = {
-        duration: 150,
-
+        duration: 300,
+        easing : "cubic-bezier(0.23, 1, 0.32, 1)",
         open: function(e, element) {
             var sidenavElement = getSidenavElement(e, element);
             var cssObject = {},
@@ -206,11 +205,10 @@
             cssObject['transition-duration'] = sideNav.duration + 'ms';
 
             //easing
-            var easing = "cubic-bezier(0.17, 0.67, 0.79, 1)";
-            cssObject['-webkit-transition-timing-function'] = easing;
-            cssObject['-moz-transition-timing-function'] = easing;
-            cssObject['-o-transition-timing-function'] = easing;
-            cssObject['transition-timing-function'] = easing;
+            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject['-o-transition-timing-function'] = sideNav.easing;
+            cssObject['transition-timing-function'] = sideNav.easing;
 
 
 
@@ -223,10 +221,10 @@
             cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
             cssObject2['transition-duration'] = sideNav.duration + 'ms';
 
-            cssObject2['-webkit-transition-timing-function'] = easing;
-            cssObject2['-moz-transition-timing-function'] = easing;
-            cssObject2['-o-transition-timing-function'] = easing;
-            cssObject2['transition-timing-function'] = easing;
+            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject2['-o-transition-timing-function'] = sideNav.easing;
+            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget_css = twCom.fn.cssObject(dragTarget);
@@ -275,11 +273,10 @@
             cssObject['transition-duration'] = sideNav.duration + 'ms';
 
             //easing
-            var easing = "cubic-bezier(0.17, 0.67, 0.79, 1)";
-            cssObject['-webkit-transition-timing-function'] = easing;
-            cssObject['-moz-transition-timing-function'] = easing;
-            cssObject['-o-transition-timing-function'] = easing;
-            cssObject['transition-timing-function'] = easing;
+            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject['-o-transition-timing-function'] = sideNav.easing;
+            cssObject['transition-timing-function'] = sideNav.easing;
 
 
             cssObject2["opacity"] = 0;
@@ -289,10 +286,10 @@
             cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
             cssObject2['transition-duration'] = sideNav.duration + 'ms';
 
-            cssObject2['-webkit-transition-timing-function'] = easing;
-            cssObject2['-moz-transition-timing-function'] = easing;
-            cssObject2['-o-transition-timing-function'] = easing;
-            cssObject2['transition-timing-function'] = easing;
+            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
+            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
+            cssObject2['-o-transition-timing-function'] = sideNav.easing;
+            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget = document.getElementById("drag-target");

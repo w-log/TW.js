@@ -146,3 +146,6 @@ function w3Http(target, readyfunc, xml, method) {
         httpObj.send(xml);
     }
 }
+
+
+w3IncludeHTML();

@@ -1,9 +1,12 @@
 *, *:before, *:after {
   box-sizing: inherit; }
 
+a {
+  text-decoration: none; }
+
 html {
   box-sizing: border-box;
-  font-family: 'Iropke Batang', serif; }
+  font-family: 'NotoSans', sans-serif; }
 
 body {
   margin: 0; }
