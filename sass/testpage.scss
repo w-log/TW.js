@@ -8,6 +8,14 @@ header, main{
   display: block;
   padding-left:250px;
 }
+.side-nav-logo{
+  font-weight: bold;
+  text-align:center;
+  font-size:2rem;
+  cursor:pointer;
+  line-height: 60px;
+  height: 60px;
+}
 .header-text{
   font-weight: bold;
   font-size: 2rem;
@@ -26,6 +34,13 @@ header, main{
   font-size: 1.2rem;
   padding: 0 !important;
   border: 1px solid #f1f1f1;
+}
+.scroll-block{
+  height: 100vh;
+  position: relative;
+  &.first-block{
+    height: auto;
+  }
 }
 pre{
   width: 100%;
@@ -71,7 +86,93 @@ pre[class*="language-"]:before {
 }
 
 
+.scroll-down-trigger{
+  position: absolute;
+  bottom: 1rem;
+  color: white;
+  font-size: 3rem;
+  padding: 0 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: 200px;
+  left : 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1;
+  @include animate("triggerMove 0.75s infinite");
+  overflow: visible;
+  &::after{
+    content: "아래로 이동";
+    position: absolute;
+    font-size: 1rem;
+    background: rgba(0,0,0,.8);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    width: 12rem;
+    padding: 0 1rem;
+    left : 0;
+    right: 0;
+    margin: 0 auto;
+    @include transform(translateY(-60px));
+    z-index: 100;
+    opacity: 1;
+    pointer-events: none;
+    @include transition("transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);");
+  }
 
+  &:hover{
+    @include animate("none");
+    &::after{
+      opacity: 0;
+        @include transform(translateY(-30px));
+    }
+  }
+}
+
+
+.scroll-up-trigger{
+  position: absolute;
+  bottom: 3rem;
+  color: white;
+  font-size: 3rem;
+  padding: 0 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: 200px;
+  left : 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1;
+  @include animate("triggerMove 0.75s infinite");
+  overflow: visible;
+  &::after{
+    content: "맨위로  이동";
+    position: absolute;
+    font-size: 1rem;
+    background: rgba(0,0,0,.8);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    width: 12rem;
+    padding: 0 1rem;
+    left : 0;
+    right: 0;
+    margin: 0 auto;
+    @include transform(translateY(40px));
+    z-index: 100;
+    opacity: 1;
+    pointer-events: none;
+    @include transition("transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);");
+  }
+  &:hover{
+    @include animate("none");
+    &::after{
+      opacity: 0;
+      @include transform(translateY(20px));
+    }
+  }
+}
 
 
 
@@ -108,18 +209,27 @@ pre[class*="language-"]:before {
     //     @include animate("afterMove 0.75s infinite");
     //   }
     // }
-
+    .side-nav-logo{
+      font-size: 1.5rem;
+    }
     header{
       padding-left:0;
     }
     main {
       padding-left:0;
     }
+}
 
 
 
-
+@media only screen and (max-width : 720px) {
+    .side-nav-logo{
+      font-size: 1.5rem;
+    }
 
 }
 
 @include keyframesubfix("afterMove","{50% {transform:translateX(-5px);}, 100%{transform:translateY(0px);}}");
+
+
+@include keyframesubfix("triggerMove","{50% {transform:translateY(-5px);}, 100%{transform:translateY(0px);}}");

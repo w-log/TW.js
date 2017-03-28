@@ -45,7 +45,7 @@
             currentTime += increment;
             // easing 함수 호출
             var val = easingCommand ? easing[easingCommand](currentTime, start, change, duration) :
-                easing["linear"](currentTime, start, change, duration);
+                easing["easeOut"](currentTime, start, change, duration);
             // move 함수 호출
             move(val);
             // 현재 애니메이션 시간이 druation을 초과했는지 확인 현재시간이 < 애니메이션 시간보다 작으면 애니메이션 진행 초과시에는 콜백함수 호출
