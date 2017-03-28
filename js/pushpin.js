@@ -1,9 +1,12 @@
 var pushpin = function() {
     // push-pin 대상의 main-content 라는 Element의 배열을 변수에 담는다.
+    if ( document.getElementsByTagName("main").length === 0 ){ return false; }
+
     var pushZones = document.getElementsByTagName("main")[0].querySelectorAll(".main-content");
     if (pushZones.length === 0) {
-        return false;
-    };
+          return false;
+    }
+
     /*
     main태그 상위에 위치한 헤더의 크기와 절대위치에서 top 좌표를 더해야
     현재 사용자가 스코롤링 하는 top 위치와 엘리먼트사이의 간격을 측정할수 있기떄문에 header 엘리먼트를 변수에 담음
