@@ -47,5 +47,5 @@ Temporary Items
 .apdisk
 
 # npm
-npm-debug.log
-node_modules
+/npm-debug.log
+/node_modules

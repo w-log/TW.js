@@ -18,9 +18,6 @@
 
         }
     }
-    var Option = {
-        width: 250,
-    };
 
     function swipe(e, element) {
         var sidenav_element = getSidenavElement(e, element);
@@ -48,12 +45,12 @@
         var cssObject = {};
         var translateX = "translateX(" + x + "px)";
 
-        cssObject['width'] = width + "px";
+        cssObject['width']             = width + "px";
         cssObject['-webkit-transform'] = translateX;
-        cssObject['-moz-transform'] = translateX;
-        cssObject['-ms-transform'] = translateX;
-        cssObject['-o-transform'] = translateX;
-        cssObject.transform = translateX;
+        cssObject['-moz-transform']    = translateX;
+        cssObject['-ms-transform']     = translateX;
+        cssObject['-o-transform']      = translateX;
+        cssObject.transform            = translateX;
         sidenav_element.setAttribute("style", twCom.fn.convertStyle(cssObject));
     }
 
@@ -174,71 +171,32 @@
     }
     var sideNav = {
         duration: 300,
-        easing : "cubic-bezier(0.23, 1, 0.32, 1)",
         open: function(e, element) {
             var sidenavElement = getSidenavElement(e, element);
-            var cssObject = {},
-                cssObject2 = {},
-                cssObject3 = {};
+
             if (sidenavElement === null) {
-                return false;
+              return false;
             }
-            var shadowELement = createShadow(sidenavElement);
-            var dragTarget = createdragTarget(sidenavElement);
-            var sidenav_css = twCom.fn.cssObject(sidenavElement);
-            var shadow_css = twCom.fn.cssObject(shadowELement);
 
+            var cssObject = {},
+            duration = sideNav.duration,
+            shadowELement = createShadow(sidenavElement),
+            dragTarget = createdragTarget(sidenavElement),
+            sidenav_css = twCom.fn.cssObject(sidenavElement),
+            shadow_css = twCom.fn.cssObject(shadowELement);
 
-            // sidenav css설정 custom attribute에서 설정한값 default = 300
-            var translateX = "translateX(0px)";
-            cssObject['-webkit-transform'] = translateX;
-            cssObject['-moz-transform'] = translateX;
-            cssObject['-ms-transform'] = translateX;
-            cssObject['-o-transform'] = translateX;
-            cssObject.transform = translateX;
-
-
-            //animation 시간
-            cssObject['-webkit-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['-moz-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['-o-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['transition-duration'] = sideNav.duration + 'ms';
-
-            //easing
-            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
-            cssObject['-moz-transition-timing-function'] = sideNav.easing;
-            cssObject['-o-transition-timing-function'] = sideNav.easing;
-            cssObject['transition-timing-function'] = sideNav.easing;
-
-
-
-            // 그림자영역 css 설정
-            cssObject2["opacity"] = 1;
-
-            //animation 시간
-            cssObject2['-webkit-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['-moz-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['transition-duration'] = sideNav.duration + 'ms';
-
-            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
-            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
-            cssObject2['-o-transition-timing-function'] = sideNav.easing;
-            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget_css = twCom.fn.cssObject(dragTarget);
-            cssObject3 = {
-                right: 0,
-                width: "90%",
+            cssObject = {
+              right: 0,
+              width: "90%",
             };
 
-            requestAnimationFrame(function() {
-                sidenav_css.cssEach(cssObject);
-                shadow_css.cssEach(cssObject2);
-                dragTarget_css.cssEach(cssObject3);
-                document.body.style.overflow = "hidden";
-            });
+            dragTarget_css.cssEach(cssObject);
+            document.body.style.overflow = "hidden";
+            twCom.fn.cssAnimate(shadow_css, "opacity" , 1, undefined, duration, "easeOut");
+            twCom.fn.cssAnimate(sidenav_css, "transform" , 0 , undefined, duration, "easeOut");
         },
         close: function(e, element) {
 
@@ -251,65 +209,30 @@
             var sidenav_element = getSidenavElement(e, shadow_element);
             var sidenav_css = twCom.fn.cssObject(sidenav_element),
                 shadow_css = twCom.fn.cssObject(shadow_element);
-            var cssObject = {},
-                cssObject2 = {},
-                cssObject3 = {};
+            var cssObject = {}, duration = sideNav.duration, unitExp = new RegExp("px|rem|em");
 
-
-            var translateX = "";
-
-            cssObject['-webkit-transform'] = translateX;
-            cssObject['-moz-transform'] = translateX;
-            cssObject['-ms-transform'] = translateX;
-            cssObject['-o-transform'] = translateX;
-            cssObject.transform = translateX;
-
-
-
-            //animation 시간
-            cssObject['-webkit-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['-moz-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['-o-transition-duration'] = sideNav.duration + 'ms';
-            cssObject['transition-duration'] = sideNav.duration + 'ms';
-
-            //easing
-            cssObject['-webkit-transition-timing-function'] = sideNav.easing;
-            cssObject['-moz-transition-timing-function'] = sideNav.easing;
-            cssObject['-o-transition-timing-function'] = sideNav.easing;
-            cssObject['transition-timing-function'] = sideNav.easing;
-
-
-            cssObject2["opacity"] = 0;
-            //animation 시간
-            cssObject2['-webkit-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['-moz-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['-o-transition-duration'] = sideNav.duration + 'ms';
-            cssObject2['transition-duration'] = sideNav.duration + 'ms';
-
-            cssObject2['-webkit-transition-timing-function'] = sideNav.easing;
-            cssObject2['-moz-transition-timing-function'] = sideNav.easing;
-            cssObject2['-o-transition-timing-function'] = sideNav.easing;
-            cssObject2['transition-timing-function'] = sideNav.easing;
 
             //drag target CSS 변경
             var dragTarget = document.getElementById("drag-target");
             var dragTarget_css = twCom.fn.cssObject(dragTarget);
-            cssObject3 = {
+            cssObject = {
                 right: "",
                 width: "",
             };
 
-            sidenav_css.cssEach(cssObject);
-            shadow_css.cssEach(cssObject2);
-            dragTarget_css.cssEach(cssObject3);
+            dragTarget_css.cssEach(cssObject);
             document.body.style.overflow = "";
-            setTimeout(function() {
+            var x = parseInt("-" + sidenav_css.getCss("width").replace(unitExp, ""));
+            twCom.fn.cssAnimate(sidenav_css, "transform" , x , function(){
+              sidenav_css.setCss("transform", "");
+            }, duration, "easeOut");
+            twCom.fn.cssAnimate(shadow_css, "opacity" , 0, function(){
                 try {
-                    shadow_element.parentElement.removeChild(shadow_element);
-                } catch (exception) {
-                    return false;
-                }
-            }, sideNav.duration);
+                   shadow_element.parentElement.removeChild(shadow_element);
+                 } catch (exception) {
+                     return false;
+                 }
+            }, duration, "easeOut");
         }
     };
 

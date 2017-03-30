@@ -191,7 +191,7 @@
         var select_column = select_dropdown.getElementsByTagName("li");
         var column_css = twCom.fn.cssObject(select_column[0]);
         var dropdown_css = twCom.fn.cssObject(select_dropdown);
-        var regExp = new RegExp("px|rem");
+        var regExp = new RegExp("px|rem|em");
         var unit = regExp.exec(column_css.getCss("min-height"));
         var height = column_css.getCss("min-height").replace(regExp, "") * select_column.length;
 
@@ -258,13 +258,13 @@
 
 
         var selectedElement = self.getElementsByClassName("selected")[0];
-
         if (selectedElement) {
             twCom.fn.removeClass(selectedElement, "selected");
         }
 
         var value = targetEle.getAttribute("value") || targetEle.parentElement.getAttribute("value") || "";
         select_input.setAttribute("value", value);
+        select_input.innerText = value;
         twCom.fn.addClass(targetEle, "selected");
 
 

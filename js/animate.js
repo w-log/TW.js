@@ -29,6 +29,35 @@
     function position() {
         return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
     }
+    function getPropertyValue(element_css, propertyName){
+      if ( propertyName === "transform" ){
+        return parseInt(element_css.getCss(propertyName).split(",")[4]);
+      }else {
+        return parseInt(element_css.getCss(propertyName));
+      }
+    }
+    function cssAnimation(element_css, propertyName, value, callback, duration, easingCommand){
+
+
+        var start = getPropertyValue(element_css, propertyName),
+        currentTime = 0,
+        change = value - start;
+        cycle = 1000 / 60;
+
+        var animate = function(){
+          currentTime += cycle;
+          var val = easing[easingCommand] ? easing[easingCommand](currentTime, start, change, duration) : easing["easeOut"](currentTime, start, change, duration);
+          var cssText = propertyName === "opacity" ? val : "translateX("+ val +"px)";
+          element_css.setCss(propertyName, cssText);
+          if ( currentTime <= duration ){
+            requestAniFrame(animate);
+          }else{
+            if ( typeof callback === "function" ) { callback(); }
+          }
+        };
+        animate();
+    }
+
 
 
     // scrollAnimation 설정함수
@@ -62,6 +91,7 @@
 
     if (window.twCom) {
         window.twCom.fn.scrollAnimate = scrollAnimation;
+        window.twCom.fn.cssAnimate = cssAnimation;
     }
 
 })();

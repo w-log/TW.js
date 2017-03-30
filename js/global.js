@@ -24,7 +24,7 @@ if (typeof window.twCom === "undefined") {
     Global.prototype.removeClass = function(Ele, ClassName) {
         if (Ele.classList && typeof ClassName === "string") {
             Ele.classList.remove(ClassName);
-        } else if (Ele.className && typeof ClassName === "string") {
+        } else if (typeof Ele.className !== "undefined" && typeof ClassName === "string") {
             Ele.className = Ele.className.replace(new RegExp("(^|\\b)(" + ClassName.split(' ').join("|") + ")(\\b|$)", "gi"), " ");
         } else {
             throw new Error("removeClass의 인자는 (Element객체,'넣을클래스명 [구분자 공백]') 으로 정의해야합니다.");
@@ -35,7 +35,7 @@ if (typeof window.twCom === "undefined") {
     Global.prototype.hasClass = function(Ele, ClassName) {
         if (Ele.classList && typeof ClassName === "string") {
             return Ele.classList.contains(ClassName);
-        } else if (Ele.className && typeof ClassName === "string") {
+        } else if (typeof Ele.className !== "undefined" && typeof ClassName === "string") {
             return new RegExp("(^|)" + ClassName + "(|$)", "gi").test(Ele.className);
         } else {
             throw new Error("hasClass의 인자는 (Element객체,'넣을클래스명') 으로 정의해야합니다.");
@@ -65,6 +65,7 @@ if (typeof window.twCom === "undefined") {
         return {
             getCss: function(prop) {
                 if (typeof prop === "string") {
+                  if ( prop === "transform" && Ele.currentStyle ) { prop = "-ms-transform"; }
                     return css[prop];
                 } else {
                     throw new Error("Css propertyName은 String 으로 정의해주세요.");
@@ -72,6 +73,7 @@ if (typeof window.twCom === "undefined") {
             },
             setCss: function(prop, value) {
                 if (typeof prop === "string") {
+                  if ( prop === "transform" && Ele.currentStyle ) { prop = "-ms-transform"; }
                     Ele.style[prop] = value;
                 } else {
                     throw new Error("Css propertyName은 String 으로 정의해주세요.");
