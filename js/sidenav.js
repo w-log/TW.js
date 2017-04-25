@@ -148,14 +148,11 @@
     }
 
     function dragEvent(drag_element) {
-        if (drag_element !== null) {
+        if (!drag_element) { return false; }
             var mc = new Hammer(drag_element);
 
             mc.on("panleft panright panend pancancel tap", function(e) {
-                if (e.eventType === 8) {
-                    return false;
-                }
-                if (e.pointerType !== "touch") {
+                if (e.eventType === 8 || e.pointerType !== 'touch') {
                     return false;
                 }
 
@@ -167,7 +164,6 @@
                     swipeEnd(e, drag_element);
                 }
             });
-        }
     }
     var sideNav = {
         duration: 300,
