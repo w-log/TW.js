@@ -103,6 +103,15 @@ input[type=search] {
         @include transform("translateY(-1.5rem) scale(0.7);");
     }
 
+    &[value] + .input-field-label{
+      @include transform("translateY(-1.5rem) scale(0.7);");
+      & + hr.focusline{
+        @include transform(scaleX(1));
+        background: $input-active-color;
+      }
+    }
+
+
     &.valid + .input-field-label{
         color: $input-valid-color;
         & + hr.focusline{
