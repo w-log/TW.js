@@ -50,7 +50,7 @@
 
             element.appendChild(effectElement);
             // wave color 설정
-            var color = element.getAttribute("data-waveColor") || "white";
+            var color = element.getAttribute("data-wave-color") || "white";
 
             twCom.fn.addClass(effectElement, waves_colorList[color]);
 
