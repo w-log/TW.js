@@ -19,11 +19,14 @@
     })();
 
     // scroll move funtion
-    function move(amount) {
-        document.documentElement.scrollTop = amount;
-        document.body.parentNode.scrollTop = amount;
-        document.body.scrollTop = amount;
+    function move(y) {
+    	document.body.scrollTop = y;
+        document.documentElement.scrollTop = y; 
+        if(document.body.parentNode) {
+        	document.body.parentNode.scrollTop = y
+        }
     }
+
 
     // 현재 scrollTop 을 반환하는 함수
     function position() {
