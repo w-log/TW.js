@@ -3,10 +3,13 @@
 
 .card{
   background-color: white;
-  border-radius: $radiuspx;
+  border-radius: $card-radius;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin-bottom: 10px;
-    &.sidetemple{
+  &.col{
+    padding: 0;
+  }
+  &.sidetemplate{
         @include display-flex;
 
         & .side-content{
@@ -28,9 +31,10 @@
                 left:0;
                 bottom:0;
                 right: 0;
-                max-width: 100%;
-                width: auto;
-                border-radius: $radiuspx 0 0 $radiuspx;
+                width: 100%;
+                height: 100%;
+                border-radius: $card-radius 0 0 $card-radius;
+                @include userselect('none');
             }
         }
 
@@ -47,26 +51,33 @@
     }
 
     & .card-profile{
+      position: relative;
         & img{
-          border-radius: $radiuspx $radiuspx 0 0;
+          position: relative;
+          border-radius: $card-radius $card-radius 0 0;
           width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          @include userselect('none');
         }
     }
     & .card-content{
-        border-radius: $radiuspx;
+        border-radius: $card-radius;
         padding: 0.75rem;
     }
     & .card-action{
         border-top: 1px solid rgba(0,0,0,0.1);
         padding: 1.5rem;
-        & a:not(.tw-btn) {
+        & a:not([class|="tw"]) {
             margin-right: 20px;
             color : $card-link-color;
             text-decoration : none;
-            @include transition(all 0.2s ease-in);
+            cursor: pointer;
+            font-weight: bold;
+            @include transition(color 0.2s);
             &:hover{
                 color : $card-linkhover-color;
-                text-decoration: underline;
             }
         }
     }

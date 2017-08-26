@@ -17,7 +17,7 @@
     display: none;
     position: fixed;
     margin: auto;
-    top: 30%;
+    top : 0;
     left: 0;
     right: 0;
     max-height: $modal-maxheight;
@@ -25,7 +25,6 @@
     box-shadow: $modal-shadow;
     will-change : transform;
     opacity: 0;
-    // @include transform(scaleX(0.7));
     z-index: 1003;
     background-color: white;
     border-radius: $modal-radius;

@@ -20,14 +20,13 @@
   text-decoration: none;
   overflow: hidden;
   position: relative;
-  -webkit-tap-highlight-color: transparent;
-  @include transition(all 0.2s ease-out);
+  @include transition(all 0.3s ease-out);
   outline: 0;
   font-family: inherit;
   font-size: inherit;
-  user-select: none;
-  -webkit-user-drag: none;
-  -webkit-tap-highlight-color: transparent;
+  &:hover:not(.tw-btn-clear){
+    box-shadow:$button-hover-shadow;
+  }
 }
 
 
@@ -85,10 +84,11 @@ i.fa::before{
 
 
 .tw-btn-float {
+  @extend .button;
   height: $button-height-default;
   line-height: $button-height-default;
+  box-shadow: $button-float-shadow;
   &-large{
-    @extend .button;
     height: $button-height-large;
     line-height: $button-height-large;
   }
@@ -98,7 +98,9 @@ i.fa::before{
 .waves-effect {
     overflow: hidden;
     position: relative;
-    -webkit-tap-highlight-color:transparent;
+    @include userselect("none");
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
     z-index: 1;
 }
 
@@ -110,7 +112,7 @@ i.fa::before{
   height: 20px;
   margin-top : -10px;
   margin-left: -10px;
-  z-index: 0;
+  z-index: -1;
   will-change : transform ,opacity;
   opacity: 0;
   pointer-events: none;

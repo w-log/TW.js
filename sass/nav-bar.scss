@@ -3,6 +3,7 @@
 @import "./function.scss";
 
   .tw-navbar{
+      position: relative;
       height: $nav-height;
       line-height: $nav-height;
       border-radius: $nav-radius;
@@ -15,7 +16,6 @@
       user-select : none;
       &.clear{
           top: 0;
-          position: absolute;
           box-shadow: none;
           background-color: transparent;
       }
@@ -28,7 +28,8 @@
         right: 0;
         margin: 0 auto;
         height: 100%;
-        width: 80%;
+        width: 100%;
+        z-index: 100;
         & .right{
           float: right;
         }
@@ -42,6 +43,7 @@
           padding: $nav-li-padding;
           text-align: center;
           background-color: transparent;
+          outline: none;
           @include transition(background 0.2s ease-out);
           border-radius: 5px;
           cursor: pointer;
@@ -50,13 +52,14 @@
             text-decoration: none;
             color : inherit;
           }
-          &.logoTitle{
+
+          &.title{
             position: absolute;
             font-size: 2rem;
             top : 0;
           }
           &:hover{
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.1);
           }
           & a{
             cursor: pointer;
@@ -87,19 +90,11 @@
   }
 
   @media only screen and (max-width : 1366px) {
-    .tw-navbar{
-      & ul{
-        width: 90%;
-      }
-    }
+
   }
   @media only screen and (max-width : 720px) {
-    .tw-navbar{
-      & ul{
-        width: 95%;
-      }
-    }
-    .logoTitle{
+
+    .title{
         font-size: 1.5rem !important;
     }
   }

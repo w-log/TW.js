@@ -47,14 +47,16 @@
   margin: auto auto;
   &:hover{
     background: transparent;
-    transform: scale(1.2);
+    @include transform(scale(1.2));
   }
   &.fb-icon{
     color:#5C6BC0;
   }
 }
 
-
+.poliocard{
+    margin: 0.5rem;
+}
 #aboutModal .profile > img{
   width: 80px;
   height: 80px;
@@ -150,6 +152,7 @@ main {
     opacity: 1;
   }
 }
+
 .scroll-down-trigger{
   position: absolute;
   bottom: 1rem;
@@ -178,17 +181,18 @@ main {
     left : 0;
     right: 0;
     margin: 0 auto;
-    transform: translateY(-60px);
+    @include transform(translateY(-60px));
     z-index: 100;
     opacity: 1;
     pointer-events: none;
     @include transition("transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);");
   }
+
   &:hover{
     @include animate("none");
     &::after{
       opacity: 0;
-      transform: translateY(-30px);
+        @include transform(translateY(-30px));
     }
   }
 }
@@ -222,7 +226,7 @@ main {
     left : 0;
     right: 0;
     margin: 0 auto;
-    transform: translateY(40px);
+    @include transform(translateY(40px));
     z-index: 100;
     opacity: 1;
     pointer-events: none;
@@ -232,7 +236,7 @@ main {
     @include animate("none");
     &::after{
       opacity: 0;
-      transform: translateY(20px);
+      @include transform(translateY(20px));
     }
   }
 }
@@ -267,6 +271,9 @@ main {
 
 
 @media only screen and (max-width : 720px) {
+    .poliocard{
+      margin: 0.3rem 0;
+    }
     #aboutModal{
       width: 300px
     }
@@ -294,6 +301,4 @@ main {
 
 
 
-
-
- @include keyframesubfix("triggerMove","{50% {transform : translateY(-5px);}, 100%{transform : translateY(0px);}}");
+@include keyframesubfix("triggerMove","{50% {transform:translateY(-5px);}, 100%{transform:translateY(0px);}}");
