@@ -1,19 +1,13 @@
 
 # Native js와 Sass기반의 Css프레임워크 개발프로젝트입니다.
 
-<<<<<<< HEAD
-현재 개발중이며, 개발중인 소스는 DevelopVersion Branch에서 볼 수 있습니다.
-=======
-현재 개발중이며, 개발중인 소스는 DevelopVersion Branch에서 볼 수 있으며, 개발중인 컴포넌트는 test.html을 브라우저로 해석가능합니다.
->>>>>>> master
+
+#### 현재 개발중이며, 개발중인 소스는 DevelopVersion Branch에서 볼 수 있습니다.
+
 
 ---
 ### 프로젝트 목표
   - Jquery의 의존하지않은 __native javascript__ 기반의 Css 프레임워크 만들기
-<<<<<<< HEAD
-=======
-  - 완성 된 후에는 __SPA 프레임워크__ 까지 지원하도록 지속적으로 개선
->>>>>>> master
   - Metarial Design 가이드라인에 따른 css적용
   - 지속적으로 컴포넌트들의 리팩토링과 신규 컴포넌트개발
 
