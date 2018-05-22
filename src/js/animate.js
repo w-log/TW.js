@@ -20,15 +20,47 @@
 
     // scroll move funtion
     function move(y) {
-        document.documentElement.scrollTop = y;
-        document.body.parentNode.scrollTop = y;
-        document.body.scrollTop = y;
+    	document.body.scrollTop = y;
+        document.documentElement.scrollTop = y; 
+        if(document.body.parentNode) {
+        	document.body.parentNode.scrollTop = y
+        }
     }
+
 
     // 현재 scrollTop 을 반환하는 함수
     function position() {
         return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
     }
+    function getPropertyValue(element_css, propertyName){
+      if ( propertyName === "transform" ){
+        return parseInt(element_css.getCss(propertyName).split(",")[4]);
+      }else {
+        return parseInt(element_css.getCss(propertyName));
+      }
+    }
+    function cssAnimation(element_css, propertyName, value, callback, duration, easingCommand){
+
+
+        var start = getPropertyValue(element_css, propertyName),
+        currentTime = 0,
+        change = value - start;
+        cycle = 1000 / 60;
+
+        var animate = function(){
+          currentTime += cycle;
+          var val = easing[easingCommand] ? easing[easingCommand](currentTime, start, change, duration) : easing["easeOut"](currentTime, start, change, duration);
+          var cssText = propertyName === "opacity" ? val : "translateX("+ val +"px)";
+          element_css.setCss(propertyName, cssText);
+          if ( currentTime <= duration ){
+            requestAniFrame(animate);
+          }else{
+            if ( typeof callback === "function" ) { callback(); }
+          }
+        };
+        animate();
+    }
+
 
 
     // scrollAnimation 설정함수
@@ -45,7 +77,7 @@
             currentTime += increment;
             // easing 함수 호출
             var val = easingCommand ? easing[easingCommand](currentTime, start, change, duration) :
-                easing["linear"](currentTime, start, change, duration);
+                easing["easeOut"](currentTime, start, change, duration);
             // move 함수 호출
             move(val);
             // 현재 애니메이션 시간이 druation을 초과했는지 확인 현재시간이 < 애니메이션 시간보다 작으면 애니메이션 진행 초과시에는 콜백함수 호출
@@ -62,6 +94,7 @@
 
     if (window.twCom) {
         window.twCom.fn.scrollAnimate = scrollAnimation;
+        window.twCom.fn.cssAnimate = cssAnimation;
     }
 
 })();

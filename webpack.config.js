@@ -11,7 +11,7 @@ const distPath = path.join(__dirname + '/dist');
 const srcPath = path.join(__dirname + '/src');
 
 
-const requiredDirectorys = ['font', 'css', 'js', 'assets'];
+const requiredDirectorys = ['font', 'scss', 'js', 'assets'];
 requiredDirectorys.forEach(dirName => {
     const dirPath = path.join(srcPath, dirName);
     !fs.existsSync(dirPath) && fs.mkdirSync(dirPath);
@@ -48,12 +48,12 @@ if (process.env.NODE_ENV === 'production') {
 
 const config = {
     entry: {
-        app: path.join(srcPath, '/index.js'),
+        tw: path.join(srcPath, '/index.js'),
     },
     output: {
         path: distPath,
         publicPath: '',
-        filename: '[name].bundle.js'
+        filename: '[name].min.js'
     },
     module: {
         loaders: [{
@@ -70,9 +70,15 @@ const config = {
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
-                loaders: [
-                    'url-loader?limit=10000&name=assets/font/[name].[ext]',
-                ]
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        //useRelativePath: true,
+                        name: 'css/font/[name].[ext]',
+                        publicPath: url => url.replace('css\/', '')
+
+                    }
+                }]
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
