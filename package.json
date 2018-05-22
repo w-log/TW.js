@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tawon2137/SassFramework.git"
+    "url": "git+https://github.com/tawon2137/TW.js.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tawon2137/SassFramework/issues"
+    "url": "https://github.com/tawon2137/TW.js/issues"
   },
-  "homepage": "https://github.com/tawon2137/SassFramework#readme"
+  "homepage": "https://github.com/tawon2137/TW.js#readme"
 }

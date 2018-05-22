@@ -121,3 +121,31 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width : 1366px) {
+  #drag-target{
+    width: 0px !important;
+  }
+  .tw-sideNav{
+    &.fixed{
+        @include transform("translateX(0%);")
+        box-shadow: $sidenav-fixed-shadow;
+    }
+  }
+}
+@media only screen and (max-width : 1366px) {
+  .tw-sideNav{
+    &.fixed{
+        @include transform(translateX(-100%));
+        box-shadow: $sidenav-shadow;
+    }
+  }
+}
