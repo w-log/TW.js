@@ -65,7 +65,7 @@ if (typeof window.twCom === "undefined") {
         return {
             getCss: function(prop) {
                 if (typeof prop === "string") {
-                  if ( prop === "transform" && Ele.currentStyle ) { prop = "-ms-transform"; }
+                    if (prop === "transform" && Ele.currentStyle) { prop = "-ms-transform"; }
                     return css[prop];
                 } else {
                     throw new Error("Css propertyName은 String 으로 정의해주세요.");
@@ -73,7 +73,7 @@ if (typeof window.twCom === "undefined") {
             },
             setCss: function(prop, value) {
                 if (typeof prop === "string") {
-                  if ( prop === "transform" && Ele.currentStyle ) { prop = "-ms-transform"; }
+                    if (prop === "transform" && Ele.currentStyle) { prop = "-ms-transform"; }
                     Ele.style[prop] = value;
                 } else {
                     throw new Error("Css propertyName은 String 으로 정의해주세요.");
