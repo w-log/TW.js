@@ -1,5 +1,6 @@
-(function() {
     "use strict";
+    var util = require('./global');
+
 
     var waves_colorList = {
         "white": "wave-color-white",
@@ -46,13 +47,13 @@
 
             var effectElement = document.createElement("span");
 
-            twCom.fn.addClass(effectElement, "wave");
+            util.addClass(effectElement, "wave");
 
             element.appendChild(effectElement);
             // wave color 설정
             var color = element.getAttribute("data-wave-color") || "white";
 
-            twCom.fn.addClass(effectElement, waves_colorList[color]);
+            util.addClass(effectElement, waves_colorList[color]);
 
             var eleOffset = offset(element);
             var ElementX = 0;
@@ -99,7 +100,7 @@
             rippleStyle['-o-transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
             rippleStyle['transition-timing-function'] = 'cubic-bezier(0.250, 0.460, 0.450, 0.940)';
 
-            effectElement.setAttribute("style", twCom.fn.convertStyle(rippleStyle));
+            effectElement.setAttribute("style", util.convertStyle(rippleStyle));
         },
 
         hide: function(e) {
@@ -148,7 +149,7 @@
         //없을시에는 element 값에 null 반환
         //있을시에는 element 변수에  waves-effect class를 가지고있는 엘리먼트를 치환하고 element 변수를 리턴시킨다.
         while (target.parentElement !== null) {
-            if (twCom.fn.hasClass(target, "waves-effect")) {
+            if (util.hasClass(target, "waves-effect")) {
                 element = target;
                 break;
             }
@@ -180,4 +181,3 @@
             document.body.addEventListener('mousedown', showEffect);
         }
     });
-})();

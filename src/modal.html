@@ -8,7 +8,7 @@
     <title>TW Css</title>
     <link rel="shortcut icon" href="./assets/favicon3.ico">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> title
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/testpage.css">
     <link rel="stylesheet" href="./css/prism.css">
 </head>
@@ -47,17 +47,19 @@
     <script src="./devjs/prism.js"></script>
     <script src="./devjs/w3data.js"></script>
     <script>
-        twCom.Modal.init("mymodal");
-        twCom.Modal.init("yourmodal", {
-            onClose: false,
-            startY: 200,
-            endY: 100,
-            openCallback: function() {
-                console.log("모달이 오픈되다.")
-            },
-            closeCallback: function() {
-                console.log("모달이 Close되다.")
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            new twCom.Modal("mymodal");
+            new twCom.Modal("yourmodal", {
+                onClose: false,
+                startY: 200,
+                endY: 100,
+                openCallback: function() {
+                    console.log("모달이 오픈되다.")
+                },
+                closeCallback: function() {
+                    console.log("모달이 Close되다.")
+                }
+            });
         });
     </script>
 
