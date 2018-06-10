@@ -1,12 +1,22 @@
-(function() {
-    "use strict";
+"use strict";
 
+var util = require('./global');
 
+(function(root, factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like enviroments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    }
+}(this, function() {
     function triggerCheck(e) {
 
         var sideNav_trigger = getSidenavtrigger(e);
-
-
 
         if (sideNav_trigger !== null) {
             var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
@@ -23,7 +33,7 @@
         var sidenav_element = getSidenavElement(e, element);
         var shadowELement = createShadow(sidenav_element);
 
-        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var sideEle_css = util.cssObject(sidenav_element);
         var width = sideEle_css.getCss("width").split("px")[0];
         width = Number(width);
         var x = (e.center.x - width);
@@ -51,12 +61,12 @@
         cssObject['-ms-transform'] = translateX;
         cssObject['-o-transform'] = translateX;
         cssObject.transform = translateX;
-        sidenav_element.setAttribute("style", twCom.fn.convertStyle(cssObject));
+        sidenav_element.setAttribute("style", util.convertStyle(cssObject));
     }
 
     function swipeEnd(e, element) {
         var sidenav_element = getSidenavElement(e, element);
-        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var sideEle_css = util.cssObject(sidenav_element);
         var width = sideEle_css.getCss("width").split("px")[0];
         var tx = sideEle_css.getCss("transform").split(",")[4];
         var currentX = Number(width) + Number(tx);
@@ -71,7 +81,7 @@
 
     function tap(e, element) {
         var sidenav_element = getSidenavElement(e, element);
-        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var sideEle_css = util.cssObject(sidenav_element);
 
         var shadowElement = document.getElementById("shadow-area");
         if (shadowElement === null) {
@@ -148,22 +158,26 @@
     }
 
     function dragEvent(drag_element) {
-        if (!drag_element) { return false; }
-        var mc = new Hammer(drag_element);
+        if (drag_element !== null) {
+            var mc = new Hammer(drag_element);
 
-        mc.on("panleft panright panend pancancel tap", function(e) {
-            if (e.eventType === 8 || e.pointerType !== 'touch') {
-                return false;
-            }
+            mc.on("panleft panright panend pancancel tap", function(e) {
+                if (e.eventType === 8) {
+                    return false;
+                }
+                if (e.pointerType !== "touch") {
+                    return false;
+                }
 
-            if (e.type === "panright" || e.type === "panleft") {
-                swipe(e, drag_element);
-            } else if (e.type === "tap") {
-                tap(e, drag_element);
-            } else {
-                swipeEnd(e, drag_element);
-            }
-        });
+                if (e.type === "panright" || e.type === "panleft") {
+                    swipe(e, drag_element);
+                } else if (e.type === "tap") {
+                    tap(e, drag_element);
+                } else {
+                    swipeEnd(e, drag_element);
+                }
+            });
+        }
     }
     var sideNav = {
         duration: 300,
@@ -178,12 +192,12 @@
                 duration = sideNav.duration,
                 shadowELement = createShadow(sidenavElement),
                 dragTarget = createdragTarget(sidenavElement),
-                sidenav_css = twCom.fn.cssObject(sidenavElement),
-                shadow_css = twCom.fn.cssObject(shadowELement);
+                sidenav_css = util.cssObject(sidenavElement),
+                shadow_css = util.cssObject(shadowELement);
 
 
             //drag target CSS 변경
-            var dragTarget_css = twCom.fn.cssObject(dragTarget);
+            var dragTarget_css = util.cssObject(dragTarget);
             cssObject = {
                 right: 0,
                 width: "90%",
@@ -191,8 +205,8 @@
 
             dragTarget_css.cssEach(cssObject);
             document.body.style.overflow = "hidden";
-            twCom.fn.cssAnimate(shadow_css, "opacity", 1, undefined, duration, "easeOut");
-            twCom.fn.cssAnimate(sidenav_css, "transform", 0, undefined, duration, "easeOut");
+            util.cssAnimate(shadow_css, "opacity", 1, undefined, duration, "easeOut");
+            util.cssAnimate(sidenav_css, "transform", 0, undefined, duration, "easeOut");
         },
         close: function(e, element) {
 
@@ -203,8 +217,8 @@
             }
 
             var sidenav_element = getSidenavElement(e, shadow_element);
-            var sidenav_css = twCom.fn.cssObject(sidenav_element),
-                shadow_css = twCom.fn.cssObject(shadow_element);
+            var sidenav_css = util.cssObject(sidenav_element),
+                shadow_css = util.cssObject(shadow_element);
             var cssObject = {},
                 duration = sideNav.duration,
                 unitExp = new RegExp("px|rem|em");
@@ -212,7 +226,7 @@
 
             //drag target CSS 변경
             var dragTarget = document.getElementById("drag-target");
-            var dragTarget_css = twCom.fn.cssObject(dragTarget);
+            var dragTarget_css = util.cssObject(dragTarget);
             cssObject = {
                 right: "",
                 width: "",
@@ -220,11 +234,11 @@
 
             dragTarget_css.cssEach(cssObject);
             document.body.style.overflow = "";
-            var x = parseInt("-" + sidenav_css.getCss("width").replace(unitExp, ""));
-            twCom.fn.cssAnimate(sidenav_css, "transform", x, function() {
+            var x = Number("-" + sidenav_css.getCss("width").replace(unitExp, ""));
+            util.cssAnimate(sidenav_css, "transform", x, function() {
                 sidenav_css.setCss("transform", "");
             }, duration, "easeOut");
-            twCom.fn.cssAnimate(shadow_css, "opacity", 0, function() {
+            util.cssAnimate(shadow_css, "opacity", 0, function() {
                 try {
                     shadow_element.parentElement.removeChild(shadow_element);
                 } catch (exception) {
@@ -234,7 +248,6 @@
         }
     };
 
-    twCom.fn.setDrag = createdragTarget;
     window.addEventListener("DOMContentLoaded", function(e) {
         if ('ontouchstart' in window) {
             document.body.addEventListener('touchend', triggerCheck, false);
@@ -242,4 +255,8 @@
             document.body.addEventListener('click', triggerCheck, false);
         }
     });
-})();
+
+    return {
+        createdragTarget: createdragTarget
+    }
+}));

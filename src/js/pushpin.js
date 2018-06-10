@@ -1,10 +1,12 @@
+var util = require('./global');
+
 var pushpin = function() {
     // push-pin 대상의 main-content 라는 Element의 배열을 변수에 담는다.
-    if ( document.getElementsByTagName("main").length === 0 ){ return false; }
+    if (document.getElementsByTagName("main").length === 0) { return false; }
 
     var pushZones = document.getElementsByTagName("main")[0].querySelectorAll(".main-content");
     if (pushZones.length === 0) {
-          return false;
+        return false;
     }
 
     /*
@@ -52,7 +54,7 @@ var pushpin = function() {
             //header의 height크기 + i 번쨰 엘리먼트의 offsetTop 값을 더 하면 페이지내에서 i번쨰 엘리먼트 페이지내에서 절대위치가 나온다.
             offsetTop = header.clientHeight + pushZones[i].offsetTop;
             //내프레임워크에서 global 객체내에 cssObject함수를 호출하여서 엘리먼트 css정보를 담은 클로저를 변수에 반환한다.
-            element_css = twCom.fn.cssObject(navElement);
+            element_css = util.cssObject(navElement);
             // 절대위치 offset값에서 현재스크롤 Y의 값을 빼면 현재 위치와 엘리먼트사이에 간격이나오며 그 값을 top이라는 변수에 담는다.
             top = offsetTop - y;
             markCheck = top + pushZones[i].clientHeight - navbarClientHeight;
@@ -63,9 +65,9 @@ var pushpin = function() {
             */
             if (top > 0) {
                 element_css.setCss("top", "0px");
-                twCom.fn.hasClass(navElement, "fixed") ? twCom.fn.removeClass(navElement, "fixed") : '';
-                twCom.fn.hasClass(content, "show") ? twCom.fn.removeClass(content, "show") : '';
-                twCom.fn.addClass(navElement, "push-pin");
+                util.hasClass(navElement, "fixed") ? util.removeClass(navElement, "fixed") : '';
+                util.hasClass(content, "show") ? util.removeClass(content, "show") : '';
+                util.addClass(navElement, "push-pin");
             }
 
             /*
@@ -76,9 +78,9 @@ var pushpin = function() {
             */
             if (top <= 1 && markCheck > 0) {
                 element_css.setCss("top", "0px");
-                twCom.fn.addClass(content, "show");
-                twCom.fn.hasClass(navElement, "push-pin") ? twCom.fn.removeClass(navElement, "push-pin") : '';
-                twCom.fn.addClass(navElement, "fixed");
+                util.addClass(content, "show");
+                util.hasClass(navElement, "push-pin") ? util.removeClass(navElement, "push-pin") : '';
+                util.addClass(navElement, "fixed");
             }
 
             /*
@@ -90,8 +92,8 @@ var pushpin = function() {
             */
             if (markCheck <= 0) {
                 element_css.setCss("top", (pushZones[i].offsetHeight - navbarClientHeight) + "px");
-                twCom.fn.hasClass(navElement, "fixed") ? twCom.fn.removeClass(navElement, "fixed") : '';
-                twCom.fn.addClass(navElement, "push-pin");
+                util.hasClass(navElement, "fixed") ? util.removeClass(navElement, "fixed") : '';
+                util.addClass(navElement, "push-pin");
             }
 
 
