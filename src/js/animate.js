@@ -102,9 +102,7 @@
             };
             animateScroll();
         }
-
-
-
+        
         return {
             scrollAnimate: scrollAnimation,
             cssAnimate: cssAnimation
