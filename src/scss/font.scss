@@ -3,6 +3,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 100;
+    font-display: swap;
     src: url('#{$noto-sans-path}Thin.eot');
     src: url("#{$noto-sans-path}Thin.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Thin.woff2") format("woff2"),
@@ -14,6 +15,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 300;
+    font-display: swap;
     src: url('#{$noto-sans-path}Light.eot');
     src: url("#{$noto-sans-path}Light.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Light.woff2") format("woff2"),
@@ -25,6 +27,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: url('#{$noto-sans-path}Regular.eot');
     src: url("#{$noto-sans-path}Regular.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Regular.woff2") format("woff2"),
@@ -36,6 +39,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 500;
+    font-display: swap;
     src: url('#{$noto-sans-path}Medium.eot');
     src: url("#{$noto-sans-path}Medium.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Medium.woff2") format("woff2"),
@@ -47,6 +51,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: url('#{$noto-sans-path}Bold.eot');
     src: url("#{$noto-sans-path}Bold.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Bold.woff2") format("woff2"),
@@ -58,6 +63,7 @@ $noto-sans-path: "./font/NotoSans-";
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 900;
+    font-display: swap;
     src: url('#{$noto-sans-path}Black.eot');
     src: url("#{$noto-sans-path}Black.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Black.woff2") format("woff2"),

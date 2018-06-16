@@ -12,8 +12,7 @@
   - 지속적으로 컴포넌트들의 리팩토링과 신규 컴포넌트개발
 
 ---
-### 개발도구
-  - text Editor : __Atom Editor__
+### 개발
   - Markup Language : __HTML__
   - style Sheet : __Sass, css 표준문법__
   - javascript : ES5,
