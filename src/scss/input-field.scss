@@ -41,7 +41,7 @@
     position: relative;
     margin: .5rem 0;
     user-select: none;
-    &.col label {
+    &.col .input-field-label {
         left: 0.75rem;
     }
     &.col hr.focusline {
