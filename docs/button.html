@@ -6,49 +6,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>TW Css</title>
-    <link rel="shortcut icon" href="./assets/favicon3.ico">
+    <link rel="shortcut icon" href="assets/imgs/favicon3.ico">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/testpage.css">
-    <link rel="stylesheet" href="./css/prism.css">
-    <link href="css/tw.css" rel="stylesheet">
-</head>
+
+
+<link href="tw.min.css" rel="stylesheet"><link href="page.min.css" rel="stylesheet"></head>
 
 <body>
-    <header w3-include-html="./header.html"></header>
+    <header>
+<div class="white-text indigo-d-3">
+    <!--side Nav -->
+    <div id="mysideNav" class="tw-sideNav fixed white-text indigo-d-3" data-width="250">
+        <div class="grey-l-5 indigo-d-3-text side-nav-logo" onclick="javascript:location.href='./'">TW Css</div>
+        <a class="waves-effect menu" data-waveColor="black" href="grid.html">Grid</a>
+        <a class="waves-effect menu" data-waveColor="black" href="color.html">Color</a>
+        <a class="waves-effect menu" data-waveColor="black" href="card.html">Card</a>
+        <a class="waves-effect menu" data-waveColor="black" href="form.html">Form</a>
+        <a class="waves-effect menu" data-waveColor="black" href="button.html">Button</a>
+        <a class="waves-effect menu" data-waveColor="black" href="toast.html">Toast</a>
+        <a class="waves-effect menu" data-waveColor="black" href="modal.html">Modal</a>
+        <a class="waves-effect menu" data-waveColor="black" href="scrollanimate.html">Scroll Animate</a>
+    </div>
+    <!-- 헤더 -->
+    <div class="tw-navbar">
+        <ul class="container">
+            <li class="title left" id="header-title" onclick="javascript:location.href='./'">TW Css</li>
+            <li class="waves-effect show-m white-text" data-sidenav="mysideNav" data-trigger="open"><i class="fa fa-bars" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+</div>
+</header>
     <main class="row container">
         <div class="header-text col s12">Button</div>
         <div class="content-text col s12">아래는 기본 Button 예제들입니다. 기능과 종류는 많이 미흡합니다.<br>지속적으로 확장해나가겠습니다.</div>
         <a class="tw-btn indigo-d-3 white-text waves-effect">button-default</a>
         <a class="tw-btn-large indigo-d-3 white-text waves-effect">button-large</a>
-        <pre class="language-markup" data-src="./componentcode/button1.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<a class="tw-btn indigo-d-3 white-text waves-effect">button-default</a>
+<a class="tw-btn-large indigo-d-3 white-text waves-effect" >button-large</a>
+</script></code></pre>
+
 
         <div class="header-text col s12">Round Button</div>
         <a class="tw-btn-Round indigo-d-3 white-text waves-effect"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
         <a class="tw-btn-Round-large indigo-d-3 white-text waves-effect"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-        <pre class="language-markup" data-src="./componentcode/button2.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<a class="tw-btn-Round indigo-d-3 white-text waves-effect" ><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+<a class="tw-btn-Round-large indigo-d-3 white-text waves-effect"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+</script></code></pre>
+
 
 
 
         <div class="header-text col s12">Transparent Button</div>
         <a class="tw-btn-clear waves-effect" data-waveColor="green">투명 버튼</a>
-        <pre class="language-markup" data-src="./componentcode/button3.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<a class="tw-btn-clear waves-effect" data-wave-color="green">투명 버튼</a>
+</script></code></pre>
 
 
         <div class="header-text col s12">Wave Effect</div>
         <div class="content-text col s12">Meterial Design Wave Effect를 사용할 수 있습니다.<br> Wave Effect 는 5가지의 색상을 지원합니다.</div>
-        <div class="red-l-5 grid-block red-a-4-text waves-effect col s2" data-waveColor="red">red</div>
-        <div class="green-l-5 grid-block green-a-4-text waves-effect col s2" data-waveColor="green">green</div>
-        <div class="yellow-l-5 grid-block yellow-a-4-text waves-effect col s2" data-waveColor="yellow">yellow</div>
-        <div class="black grid-block white-text waves-effect col s2" data-waveColor="white">white</div>
-        <div class="white grid-block waves-effect col s2" data-waveColor="black">black</div>
+        <div class="red-l-5 grid-block red-a-4-text waves-effect col s2" data-wave-color="red">red</div>
+        <div class="green-l-5 grid-block green-a-4-text waves-effect col s2" data-wave-color="green">green</div>
+        <div class="yellow-l-5 grid-block yellow-a-4-text waves-effect col s2" data-wave-color="yellow">yellow</div>
+        <div class="black grid-block white-text waves-effect col s2" data-wave-color="white">white</div>
+        <div class="white grid-block waves-effect col s2" data-wave-color="black">black</div>
 
-        <pre class="language-markup" data-src="./componentcode/wave1.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<div class="red-l-5 grid-block red-a-4-text waves-effect col s2" data-waveColor="red">red</div>
+<div class="green-l-5 grid-block green-a-4-text waves-effect col s2" data-waveColor="green">green</div>
+<div class="yellow-l-5 grid-block yellow-a-4-text waves-effect col s2" data-waveColor="yellow">yellow</div>
+<div class="black grid-block white-text waves-effect col s2" data-waveColor="white">white</div>
+<div class="white grid-block waves-effect col s2" data-waveColor="black">black</div>
+</script></code></pre>
         <div class="content-text col s12">Wave Effect는 모든 컴포넌트에 적용될 수 있습니다.<br> 다만 z-index값이 0이기때문에 일부 엘리먼트로 인해 가려질 수 있습니다.</div>
+
     </main>
-    <script type="text/javascript" src="tw.min.js"></script>
-    <script src="./devjs/prism.js"></script>
-    <script src="./devjs/w3data.js"></script>
-</body>
+
+
+<script type="text/javascript" src="tw.min.js"></script><script type="text/javascript" src="page.min.js"></script></body>
 
 </html>

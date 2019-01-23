@@ -1,6 +1,5 @@
 import './module';
 import './scss/TW.scss';
-
 (function(root, factory) {
     'use strict';
     window.twCom = factory();

@@ -3,12 +3,15 @@ const webpack = require('webpack'),
     fs = require('fs');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const isDevelopment = process.env.NODE_ENV === 'development';
 
-
-
-const distPath = path.join(__dirname + '/dist');
-const srcPath = path.join(__dirname + '/src');
+const distPath = path.join(__dirname, '/dist');
+const srcPath = path.join(__dirname, '/src');
 
 
 const requiredDirectorys = ['font', 'scss', 'js', 'assets'];
@@ -19,7 +22,8 @@ requiredDirectorys.forEach(dirName => {
 
 
 
-const htmlFiles = fs.readdirSync(srcPath).filter(fileName => path.extname(fileName) === '.html');
+
+const htmlFiles = fs.readdirSync(srcPath).filter(fileName => path.extname(fileName) === '.html' && fileName.indexOf('header') === -1);
 
 const plugins = [];
 htmlFiles.forEach(fileName => {
@@ -29,26 +33,38 @@ htmlFiles.forEach(fileName => {
     }));
 });
 
-const cssFileName = process.env.NODE_ENV === 'production' ? 'css/[name].css' : 'css/[name].[contenthash].css';
-const extractSass = new ExtractTextPlugin(cssFileName);
 
 
-plugins.push(extractSass);
+plugins.push(
+  new MiniCssExtractPlugin({
+    filename: process.env.NODE_ENV === 'production' ? '[name].min.css' : '[name].[contenthash].css',
+  }),
+  new FriendlyErrorsWebpackPlugin()
+);
+
+if(!isDevelopment) {
+  plugins.push(
+    new CleanWebpackPlugin(distPath)
+  )
+}
 plugins.push(new webpack.DefinePlugin({
     app: {
         environment: JSON.stringify(process.env.APP_ENVIRONMENT || 'development')
     }
 }));
 
-if (process.env.NODE_ENV === 'production') {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compressor: { warnings: false }
-    }));
-}
 
 const config = {
+    mode: isDevelopment ? 'development' : 'production',
     entry: {
         tw: path.join(srcPath, '/index.js'),
+        page: path.join(srcPath, '/page/index.js'),
+    },
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin(),
+        new OptimizeCSSAssetsPlugin({})
+      ],
     },
     output: {
         path: distPath,
@@ -56,36 +72,47 @@ const config = {
         filename: '[name].min.js'
     },
     module: {
-        loaders: [{
+        rules: [{
                 test: /\.js$/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                exclude: /(node_modules|bower_components)/,
             },
             {
                 test: /\.html$/,
+                include: [path.join(srcPath, '/include_html'), path.join(srcPath, '/componentcode')],
                 loader: 'html-loader'
             },
             {
                 test: /\.(scss|css)$/,
-                use: extractSass.extract(['css-loader?minimize=true', 'resolve-url-loader', 'sass-loader']),
+                use: [
+                  {
+                    loader: MiniCssExtractPlugin.loader
+                  },
+                  {
+                   loader: 'css-loader',
+                   options: {
+                     url: true,
+                     sourceMap: true
+                   }
+                  }, 'sass-loader'
+                ]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
                 use: [{
-                    loader: 'file-loader',
+                    loader: 'url-loader',
                     options: {
-                        //useRelativePath: true,
-                        name: 'css/font/[name].[ext]',
-                        publicPath: url => url.replace('css\/', '')
-
+                        limit: 1,
+                        name: isDevelopment ? '' :'assets/font/[name].[ext]',
                     }
                 }]
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(gif|png|jpe?g|svg|ico)$/i,
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 10000,
+                        limit: 1,
                         name: 'assets/imgs/[name].[ext]'
                     }
                 }]
@@ -93,10 +120,13 @@ const config = {
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.html', '.css', 'scss']
+        extensions: ['*', '.js', '.html', '.css', 'scss'],
+        alias: {
+          '@': srcPath,
+        }
     },
     devServer: {
-        contentBase: path.join(__dirname, "src")
+        contentBase: srcPath
     },
     plugins: plugins
 };

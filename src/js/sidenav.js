@@ -46,9 +46,8 @@ var util = require('./global');
         if (x < -width) {
             x = -width;
         }
-        var opacity = (10000 / width);
-        opacity = opacity / (opacity * width);
-        opacity = opacity * (width + x);
+
+        var opacity = (width + x) / width;
 
         shadowELement.setAttribute("style", "opacity :" + opacity + ";");
 

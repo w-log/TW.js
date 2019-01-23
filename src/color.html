@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>TW Css</title>
-    <link rel="shortcut icon" href="./assets/favicon3.ico">
+    <link rel="shortcut icon" href="<%=require('@/assets/img/favicon3.ico')%>">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/testpage.css">
-    <link rel="stylesheet" href="./css/prism.css">
+
+
 </head>
 
 <body class="grey-l-3">
 
 
-    <header w3-include-html="./header.html"></header>
-    <script src="./devjs/w3data.js"></script>
+    <header><%=require('./include_html/header.html')%></header>
+
 
     <main class="row container">
         <div class="header-text col s12" style="margin-bottom:2rem;">Color</div>
@@ -28,13 +28,13 @@
             <div class="tw-btn indigo-d-3 white-text col s6">색상을 적용한 button 예제</div>
             <div class="tw-btn white indigo-d-3-text col s6">색상을 적용한 button 예제</div>
         </div>
-        <pre class="language-markup" data-src="./componentcode/color.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain"><%=require('@/componentcode/color.html')%></script></code></pre>
         <div class="color-container row"></div>
         <div class="color-container row"></div>
 
     </main>
-    <script src="./devjs/color.js"></script>
-    <script src="./devjs/prism.js"></script>
+
+
 </body>
 
 </html>
