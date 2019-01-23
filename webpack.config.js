@@ -23,7 +23,7 @@ requiredDirectorys.forEach(dirName => {
 
 
 
-const htmlFiles = fs.readdirSync(srcPath).filter(fileName => path.extname(fileName) === '.html' && fileName.indexOf('header') === -1);
+const htmlFiles = fs.readdirSync(srcPath).filter(fileName => path.extname(fileName) === '.html');
 
 const plugins = [];
 htmlFiles.forEach(fileName => {
@@ -81,6 +81,10 @@ const config = {
                 test: /\.html$/,
                 include: [path.join(srcPath, '/include_html'), path.join(srcPath, '/componentcode')],
                 loader: 'html-loader'
+            },
+            {
+              test: /\.txt$/,
+              use: 'raw-loader'
             },
             {
                 test: /\.(scss|css)$/,
