@@ -1,10 +1,10 @@
-$noto-sans-path: "./font/NotoSans-";
+$noto-sans-path: "~@/scss/font/NotoSans-";
 @font-face {
     font-family: "NotoSans";
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url('#{$noto-sans-path}Thin.eot');
+    src: url("#{$noto-sans-path}Thin.eot");
     src: url("#{$noto-sans-path}Thin.eot?#iefix") format('embedded-opentype'),
     url("#{$noto-sans-path}Thin.woff2") format("woff2"),
     url("#{$noto-sans-path}Thin.woff") format("woff"),

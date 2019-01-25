@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>TW Css</title>
-    <link rel="shortcut icon" href="./assets/favicon3.ico">
+    <link rel="shortcut icon" href="<%=require('@/assets/img/favicon3.ico')%>">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/testpage.css">
-    <link rel="stylesheet" href="./css/prism.css">
+
+
 </head>
 
 <body>
-    <header w3-include-html="./header.html"></header>
+    <header><%=require('./include_html/header.html')%></header>
     <main class="row container">
         <div class="header-text col s12">Form</div>
         <div class="content-text col s12">
@@ -44,7 +44,7 @@
             <input type="text">
             <label class="input-field-label">focus line을 지울 수 있습니다.</label>
         </div>
-        <pre class="language-markup" data-src="./componentcode/input1.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain"><%=require('@/componentcode/input1.html')%></script></code></pre>
 
 
 
@@ -67,7 +67,7 @@
             <button type="submit" class="col s12 tw-btn indigo-d-3 white-text " style="font-weight:bold;">이 버튼의 submit요청으로 get방식의 parameter를 확인해보세요.</button>
         </form>
         <div class="col s12">&nbsp;</div>
-        <pre class="language-markup" data-src="./componentcode/input2.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain"><%=require('@/componentcode/input2.html')%></script></code></pre>
         <div class="header-text col s12">
             브라우저의 기본 select
         </div>
@@ -79,12 +79,12 @@
           <option value="option4">옵션4</option>
         </select>
         <div class="col s12">&nbsp;</div>
-        <pre class="language-markup" data-src="./componentcode/input3.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain"><%=require('@/componentcode/input3.html')%></script></code></pre>
     </main>
 
 
-    <script src="./devjs/prism.js"></script>
-    <script src="./devjs/w3data.js"></script>
+
+
 </body>
 
 </html>

@@ -63,7 +63,7 @@
             var animate = function() {
                 currentTime += cycle;
                 var val = easing[easingCommand] ? easing[easingCommand](currentTime, start, change, duration) : easing["easeOut"](currentTime, start, change, duration);
-                var cssText = propertyName === "opacity" ? val : "translateX(" + val + "px)";
+                var cssText = propertyName === "opacity" ? val : "translateX(" + Math.floor(val) + "px)";
                 element_css.setCss(propertyName, cssText);
                 if (currentTime <= duration) {
                     requestAniFrame(animate);
@@ -102,7 +102,7 @@
             };
             animateScroll();
         }
-        
+
         return {
             scrollAnimate: scrollAnimation,
             cssAnimate: cssAnimation

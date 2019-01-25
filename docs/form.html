@@ -6,16 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>TW Css</title>
-    <link rel="shortcut icon" href="./assets/favicon3.ico">
+    <link rel="shortcut icon" href="assets/imgs/favicon3.ico">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> title
-    <link rel="stylesheet" href="./css/testpage.css">
-    <link rel="stylesheet" href="./css/prism.css">
-    <link href="css/tw.css" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link href="tw.min.css" rel="stylesheet"><link href="page.min.css" rel="stylesheet"></head>
 
 <body>
-    <header w3-include-html="./header.html"></header>
+    <header>
+<div class="white-text indigo-d-3">
+    <!--side Nav -->
+    <div id="mysideNav" class="tw-sideNav fixed white-text indigo-d-3" data-width="250">
+        <div class="grey-l-5 indigo-d-3-text side-nav-logo" onclick="javascript:location.href='./'">TW Css</div>
+        <a class="waves-effect menu" data-waveColor="black" href="grid.html">Grid</a>
+        <a class="waves-effect menu" data-waveColor="black" href="color.html">Color</a>
+        <a class="waves-effect menu" data-waveColor="black" href="card.html">Card</a>
+        <a class="waves-effect menu" data-waveColor="black" href="form.html">Form</a>
+        <a class="waves-effect menu" data-waveColor="black" href="button.html">Button</a>
+        <a class="waves-effect menu" data-waveColor="black" href="toast.html">Toast</a>
+        <a class="waves-effect menu" data-waveColor="black" href="modal.html">Modal</a>
+        <a class="waves-effect menu" data-waveColor="black" href="scrollanimate.html">Scroll Animate</a>
+    </div>
+    <!-- 헤더 -->
+    <div class="tw-navbar">
+        <ul class="container">
+            <li class="title left" id="header-title" onclick="javascript:location.href='./'">TW Css</li>
+            <li class="waves-effect show-m white-text" data-sidenav="mysideNav" data-trigger="open"><i class="fa fa-bars" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+</div>
+</header>
     <main class="row container">
         <div class="header-text col s12">Form</div>
         <div class="content-text col s12">
@@ -45,7 +66,30 @@
             <input type="text">
             <label class="input-field-label">focus line을 지울 수 있습니다.</label>
         </div>
-        <pre class="language-markup" data-src="./componentcode/input1.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<div class="tw-input-field col s6">
+    <input type="text" name="text">
+    <label class="input-field-label">text field</label>
+    <hr class="focusline">
+</div>
+
+<div class="tw-input-field col s6">
+    <input type="number" name="number">
+    <label class="input-field-label">number field</label>
+    <hr class="focusline">
+</div>
+
+<div class="tw-input-field col s12">
+    <input type="text" placeholder="placeholder">
+    <label class="input-field-label">placeholder 속성을 지정하면 label이 고정됩니다. Wow~</label>
+    <hr class="focusline">
+</div>
+
+<div class="tw-input-field col s12">
+    <input type="text">
+    <label class="input-field-label">focusline을 지울 수 있습니다.</label>
+</div>
+</script></code></pre>
 
 
 
@@ -68,7 +112,19 @@
             <button type="submit" class="col s12 tw-btn indigo-d-3 white-text " style="font-weight:bold;">이 버튼의 submit요청으로 get방식의 parameter를 확인해보세요.</button>
         </form>
         <div class="col s12">&nbsp;</div>
-        <pre class="language-markup" data-src="./componentcode/input2.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<form method="GET" action="/asd">
+  <div class="col s12">
+    <select class="" id="myselect" name="myselected" data-labelText="Select Box">
+      <option value="selected를 주지않으면 첫번째 옵션selected." selected>옵션1 selected</option>
+      <option value="option2">옵션2</option>
+      <option value="option3" disabled>옵션3 disabled</option>
+      <option value="option4">옵션4</option>
+    </select>
+  </div>
+  <button type="submit" class="col s12 tw-btn indigo-d-3 white-text " style="font-weight:bold;">이 버튼의 submit요청으로 get방식의 parameter를 확인해보세요.</button>
+</form>
+</script></code></pre>
         <div class="header-text col s12">
             브라우저의 기본 select
         </div>
@@ -80,12 +136,19 @@
           <option value="option4">옵션4</option>
         </select>
         <div class="col s12">&nbsp;</div>
-        <pre class="language-markup" data-src="./componentcode/input3.html"></pre>
+        <pre class="language-markup"><code><script type="text/plain">
+<select class="browser-default col s12" id="myselect" name="myselected" data-labelText="Select Box">
+  <option value="browser-default" selected>옵션1 browser-default</option>
+  <option value="option2">옵션2</option>
+  <option value="option3" disabled>옵션3 disabled</option>
+  <option value="option4">옵션4</option>
+</select>
+</script></code></pre>
     </main>
 
-    <script type="text/javascript" src="tw.min.js"></script>
-    <script src="./devjs/prism.js"></script>
-    <script src="./devjs/w3data.js"></script>
-</body>
+
+
+
+<script type="text/javascript" src="tw.min.js"></script><script type="text/javascript" src="page.min.js"></script></body>
 
 </html>

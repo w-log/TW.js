@@ -6,15 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>TW Css</title>
-    <link rel="shortcut icon" href="./assets/favicon3.ico">
+    <link rel="shortcut icon" href="assets/imgs/favicon3.ico">
     <link href='https://fonts.googleapis.com/css?family=Baloo+Bhaina' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/testpage.css">
-    <link rel="stylesheet" href="./css/prism.css">
-<link href="css/tw.css" rel="stylesheet"></head>
+
+
+<link href="tw.min.css" rel="stylesheet"><link href="page.min.css" rel="stylesheet"></head>
 
 <body>
-    <header w3-include-html="./header.html"></header>
+    <header>
+<div class="white-text indigo-d-3">
+    <!--side Nav -->
+    <div id="mysideNav" class="tw-sideNav fixed white-text indigo-d-3" data-width="250">
+        <div class="grey-l-5 indigo-d-3-text side-nav-logo" onclick="javascript:location.href='./'">TW Css</div>
+        <a class="waves-effect menu" data-waveColor="black" href="grid.html">Grid</a>
+        <a class="waves-effect menu" data-waveColor="black" href="color.html">Color</a>
+        <a class="waves-effect menu" data-waveColor="black" href="card.html">Card</a>
+        <a class="waves-effect menu" data-waveColor="black" href="form.html">Form</a>
+        <a class="waves-effect menu" data-waveColor="black" href="button.html">Button</a>
+        <a class="waves-effect menu" data-waveColor="black" href="toast.html">Toast</a>
+        <a class="waves-effect menu" data-waveColor="black" href="modal.html">Modal</a>
+        <a class="waves-effect menu" data-waveColor="black" href="scrollanimate.html">Scroll Animate</a>
+    </div>
+    <!-- 헤더 -->
+    <div class="tw-navbar">
+        <ul class="container">
+            <li class="title left" id="header-title" onclick="javascript:location.href='./'">TW Css</li>
+            <li class="waves-effect show-m white-text" data-sidenav="mysideNav" data-trigger="open"><i class="fa fa-bars" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+</div>
+</header>
     <main class="row container">
 
         <div class="header-text col s12">Modal</div>
@@ -28,7 +50,24 @@
             </div>
         </div>
         <a class="col s12 tw-btn openModal indigo-d-3 white-text" data-target="mymodal" style="font-weight:bold; margin-bottom:1rem;">이 버튼으로 모달창을 열 수 있습니다.</a>
-        <pre class="language-markup" data-src="./componentcode/modal1.html"></pre>
+        <pre class="language-markup"><code><style>
+<div id="mymodal" class="modal">
+    <div class="modal-content row">
+        content zone
+    </div>
+    <div class="modal-footer">
+        <a class="tw-btn-clear waves-effect">모달안에 clear button</a>
+    </div>
+</div>
+<a class="col s12 tw-btn openModal indigo-d-3 white-text" data-target="mymodal" style="font-weight:bold;">이 버튼으로 모달창을 열 수 있습니다.</a>
+
+
+<script>
+    twCom.Modal.init(document.getElementById("mymodal"));
+    //또는
+    twCom.Modal.init("mymodal");
+</script>
+</style></code></pre>
         <!-- <button class="col s12 tw-btn indigo-d-3 white-text" style="font-weight:bold;" onclick="javascript:twCom.fn.scrollAnimate(0, undefined, 1500,'easeOut');">이 버튼을 클릭하면 scroll 애니메이션이 수행되어 페이지 최상단으로 이동하게됩니다.</button> -->
         <div class="content-text col s12"><span class="pink-a-3-text">Modal 내부에 닫기버튼을 생성할 수 있으며, Modal의 생성자 함수에 Option을 줄 수 있습니다.</span><br> 사용방법은 아래와 같습니다.</div>
         <div id="yourmodal" class="modal">
@@ -40,12 +79,38 @@
             </div>
         </div>
         <a class="col s12 tw-btn openModal indigo-d-3 white-text" data-target="yourmodal" style="font-weight:bold; margin-bottom:1rem;">이 버튼으로 모달창을 열 수 있습니다.2</a>
-        <pre class="language-markup" data-src="./componentcode/modal2.html"></pre>
+        <pre class="language-markup"><code><style>
+<div id="yourmodal" class="modal">
+    <div class="modal-content row">
+      content zone
+    </div>
+    <div class="modal-footer">
+        <a class="tw-btn-clear waves-effect closeModal">닫기</a>
+    </div>
+</div>
+<a class="col s12 tw-btn openModal indigo-d-3 white-text" data-target="yourmodal" style="font-weight:bold;">이 버튼으로 모달창을 열 수 있습니다.2</a>
+
+
+<script>
+twCom.Modal.init("yourmodal",
+{
+  onClose : false, // Modal창 밖을 클릭하면 Modal close이벤트 실행여부 default : true
+  startY : 200, // translateY 애니메이션 시작위치 단위 : % default 150%
+  endY : 100, // translateY 애니메이션 끝 위치 단위 : % default : 60%
+  openCallback : function () { // Modal open Event Callback Function
+    console.log("모달이 오픈되다.")
+  },
+  closeCallback : function () { // Modal close Event Callback Function
+    console.log("모달이 Close되다.")
+  }
+});
+</script>
+</style></code></pre>
     </main>
 
 
-    <script src="./devjs/prism.js"></script>
-    <script src="./devjs/w3data.js"></script>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             new twCom.Modal("mymodal");
@@ -63,6 +128,6 @@
         });
     </script>
 
-<script type="text/javascript" src="tw.min.js"></script></body>
+<script type="text/javascript" src="tw.min.js"></script><script type="text/javascript" src="page.min.js"></script></body>
 
 </html>
