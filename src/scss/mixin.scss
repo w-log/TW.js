@@ -16,11 +16,8 @@
         animation:#{$value};
 }
 @mixin keyframesubfix($title , $value) {
-  @-webkit-keyframes #{$title} #{$value}
-  @-moz-keyframes #{$title} #{$value}
-  @-o-keyframes #{$title} #{$value}
-  @-ms-keyframes #{$title} #{$value}
-  @keyframes #{$title} #{$value}
+  @-webkit-keyframes #{$title + ' {' +  $value + '}'};
+  @keyframes #{$title + ' {' +  $value + '}'};
 };
 
 @mixin userselect($value){

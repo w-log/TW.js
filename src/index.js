@@ -3,7 +3,6 @@ import './scss/TW.scss';
 
 (function(root, factory) {
     'use strict';
-
     window.twCom = factory();
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.

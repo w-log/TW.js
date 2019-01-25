@@ -52,7 +52,6 @@
                 color: inherit;
             }
             &.title {
-                position: absolute;
                 font-size: 2rem;
                 top: 0;
                 h1,
@@ -96,7 +95,10 @@
     }
 }
 
-@media only screen and (max-width: 1366px) {}
+@media only screen and (max-width: 1366px) {
+
+    
+}
 
 @media only screen and (max-width: 720px) {
     .title {

@@ -1,4 +1,5 @@
 @import "./mixin.scss";
+@import "./variable.scss";
 @import "./function.scss";
 #aboutModal {
     width: 700px;
@@ -293,4 +294,24 @@ main {
     }
 }
 
-@include keyframesubfix("triggerMove", "{50% {transform:translateY(-5px);}, 100%{transform:translateY(0px);}}");
+.tw-sideNav {
+    & .menu {
+        cursor: pointer;
+        padding: 0 1rem;
+        color : inherit;
+        height: $sidenav-col-height;
+        line-height: $sidenav-col-height;
+        display: block;
+        font-weight: bold;
+        @include transition(color 0.2s ease-in);
+        text-decoration: none;
+        &:hover{
+          background: rgba(0,0,0,0.15);
+        }
+    }
+}
+
+@include keyframesubfix("triggerMove", "{
+    50% {transform:translateY(-5px);} 
+    100%{transform:translateY(0px);}
+}");
