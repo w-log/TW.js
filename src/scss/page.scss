@@ -294,7 +294,7 @@ main {
     }
 }
 
-.tw-sideNav {
+.tw-side-nav {
     & .menu {
         cursor: pointer;
         padding: 0 1rem;
@@ -312,6 +312,6 @@ main {
 }
 
 @include keyframesubfix("triggerMove", "{
-    50% {transform:translateY(-5px);} 
+    50% {transform:translateY(-5px);}
     100%{transform:translateY(0px);}
 }");

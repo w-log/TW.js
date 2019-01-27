@@ -32,9 +32,9 @@ var util = require('./global');
     function swipe(e, element) {
         var sidenav_element = getSidenavElement(e, element);
         var shadowELement = createShadow(sidenav_element);
-
         var sideEle_css = util.cssObject(sidenav_element);
         var width = sideEle_css.getCss("width").split("px")[0];
+
         width = Number(width);
         var x = (e.center.x - width);
 
@@ -55,6 +55,7 @@ var util = require('./global');
         var translateX = "translateX(" + x + "px)";
 
         cssObject['width'] = width + "px";
+        cssObject['visibility'] = 'visible';
         cssObject['-webkit-transform'] = translateX;
         cssObject['-moz-transform'] = translateX;
         cssObject['-ms-transform'] = translateX;
@@ -204,6 +205,7 @@ var util = require('./global');
 
             dragTarget_css.cssEach(cssObject);
             document.body.style.overflow = "hidden";
+            sidenav_css.setCss("visibility", "visible");
             util.cssAnimate(shadow_css, "opacity", 1, undefined, duration, "easeOut");
             util.cssAnimate(sidenav_css, "transform", 0, undefined, duration, "easeOut");
         },
@@ -236,6 +238,7 @@ var util = require('./global');
             var x = Number("-" + sidenav_css.getCss("width").replace(unitExp, ""));
             util.cssAnimate(sidenav_css, "transform", x, function() {
                 sidenav_css.setCss("transform", "");
+                sidenav_css.setCss("visibility", "");
             }, duration, "easeOut");
             util.cssAnimate(shadow_css, "opacity", 0, function() {
                 try {

@@ -21,13 +21,14 @@
    z-index: 998;
 }
 
-.tw-sideNav {
+.tw-side-nav {
   position: fixed;
   width: 250px;
   left: 0;
   top: 0;
   margin: 0;
   will-change: transform;
+  visibility: hidden;
   @include transform(translateX(-100%));
   height: 100%;
   z-index: 999;
@@ -91,15 +92,15 @@
   #drag-target{
     width: 0px !important;
   }
-  .tw-sideNav{
+  .tw-side-nav {
     &.fixed{
-        @include transform("translateX(0%);")
+        @include transform("translateX(0%);");
         box-shadow: $sidenav-fixed-shadow;
     }
   }
 }
 @media only screen and (max-width : 1366px) {
-  .tw-sideNav{
+  .tw-side-nav{
     &.fixed{
         @include transform(translateX(-100%));
         box-shadow: $sidenav-shadow;
@@ -107,30 +108,3 @@
   }
 }
 
-
-
-
-
-
-
-
-
-@media only screen and (min-width : 1366px) {
-  #drag-target{
-    width: 0px !important;
-  }
-  .tw-sideNav{
-    &.fixed{
-        @include transform("translateX(0%);")
-        box-shadow: $sidenav-fixed-shadow;
-    }
-  }
-}
-@media only screen and (max-width : 1366px) {
-  .tw-sideNav{
-    &.fixed{
-        @include transform(translateX(-100%));
-        box-shadow: $sidenav-shadow;
-    }
-  }
-}
