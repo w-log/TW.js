@@ -1,82 +1,89 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 @import "./function.scss";
-#shadow-area{
+
+#shadow-area {
     position: fixed;
-    left:0px;
-    top:0px;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 120vh;
     z-index: 997;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     will-change: opacity;
     opacity: 0;
 }
 
-#drag-target{
-   position:fixed;
-   top : 0;
-   width: 10px;
-   height: 100%;
-   z-index: 998;
+#drag-target {
+    position: fixed;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    z-index: 998;
 }
 
 .tw-side-nav {
-  position: fixed;
-  width: 250px;
-  left: 0;
-  top: 0;
-  margin: 0;
-  will-change: transform;
-  visibility: hidden;
-  @include transform(translateX(-100%));
-  height: 100%;
-  z-index: 999;
-  backface-visibility: hidden;
-  box-shadow: $sidenav-shadow;
-    & .profile{
-        font-size : 14px;
+    position: fixed;
+    width: 250px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    will-change: transform;
+    visibility: hidden;
+    @include transform(translateX(-100%));
+    height: 100%;
+    z-index: 999;
+    backface-visibility: hidden;
+    box-shadow: $sidenav-shadow;
+
+    & .profile {
+        font-size: 14px;
         position: relative;
-        padding: 1rem 1rem .25rem ;
+        padding: 1rem 1rem .25rem;
         margin-bottom: 5px;
-        & .background{
-          z-index: -1;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left:0;
-          overflow: hidden;
+
+        & .background {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
         }
-        & .avatar{
+
+        & .avatar {
             & img {
-              display: block;
-              width: 60px;
-              height: 60px;
-              border-radius:$sidenav-avatar-radius;
+                display: block;
+                width: 60px;
+                height: 60px;
+                border-radius: $sidenav-avatar-radius;
             }
         }
-        & .name{
+
+        & .name {
             padding: 0 .1rem .5rem .1em;
             display: block;
             margin-top: 1em;
         }
-        & .title{
+
+        & .title {
             display: block;
             font-size: .9em;
             padding-bottom: 1em;
         }
     }
+
     .menu {
-      cursor: pointer;
-      padding: 0 1rem;
-      color: inherit;
-      height: 40px;
-      line-height: 40px;
-      display: block;
-      font-weight: 700;
-      @include transition('color .2s ease-in');
-      text-decoration: none;
+        cursor: pointer;
+        padding: 0 1rem;
+        color: inherit;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        font-weight: 700;
+        @include transition('color .2s ease-in');
+        text-decoration: none;
     }
 }
 
@@ -84,25 +91,25 @@
 
 
 @media only screen and (min-width : 1366px) {
-  #drag-target{
-    width: 0px !important;
-  }
-  .tw-side-nav {
-    visibility: visible;
-    &.fixed{
-        @include transform("translateX(0%);");
-        box-shadow: $sidenav-fixed-shadow;
+    #drag-target {
+        width: 0px !important;
     }
-  }
+
+    .tw-side-nav {
+        visibility: visible;
+
+        &.fixed {
+            @include transform("translateX(0%);");
+            box-shadow: $sidenav-fixed-shadow;
+        }
+    }
 }
 
 @media only screen and (max-width : 1366px) {
-  .tw-side-nav{
-    &.fixed{
-        @include transform(translateX(-100%));
-        box-shadow: $sidenav-shadow;
+    .tw-side-nav {
+        &.fixed {
+            @include transform(translateX(-100%));
+            box-shadow: $sidenav-shadow;
+        }
     }
-  }
 }
-
-
