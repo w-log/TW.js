@@ -10,6 +10,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+const docsPath = path.join(__dirname, '/docs');
 const distPath = path.join(__dirname, '/dist');
 const srcPath = path.join(__dirname, '/src');
 
@@ -44,7 +45,7 @@ plugins.push(
 
 if(!isDevelopment) {
   plugins.push(
-    new CleanWebpackPlugin(distPath)
+    new CleanWebpackPlugin([distPath, docsPath])
   )
 }
 plugins.push(new webpack.DefinePlugin({

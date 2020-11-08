@@ -1,6 +1,7 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 @import "./function.scss";
+
 #shadow-area {
     position: fixed;
     left: 0px;
@@ -21,72 +22,26 @@
     z-index: 998;
 }
 
-.tw-sideNav {
+.tw-side-nav {
     position: fixed;
     width: 250px;
     left: 0;
     top: 0;
     margin: 0;
     will-change: transform;
+    visibility: hidden;
     @include transform(translateX(-100%));
     height: 100%;
-    height: calc(100% + 60px);
-    height: -moz-calc(100%);
     z-index: 999;
-    // overflow: auto;
     backface-visibility: hidden;
     box-shadow: $sidenav-shadow;
-    &>.menu {
-        cursor: pointer;
-        padding: 0 1rem;
-        color: inherit;
-        height: $sidenav-col-height;
-        line-height: $sidenav-col-height;
-        display: block;
-        font-weight: bold;
-        @include transition(color 0.2s ease-in);
-        text-decoration: none;
-        &:hover {
-            background: rgba(0, 0, 0, 0.15);
-        }
-    }
-    ul {
-        li {
-            @include transition("color 0.2s ease-in, background 0.2s ease-out");
-            cursor: pointer;
-            &:hover,
-            &:active,
-            &:focus {
-                background-color: rgba(50, 50, 50, 0.06);
-            }
-        }
-        li a {
-            padding: 0.5rem;
-            color: inherit;
-            display: block;
-            font-weight: 400;
-            text-decoration: none;
-        }
-        ul {
-            li a {
-                padding: 0.5rem 1rem;
-            }
-        }
-    }
-    & #closeNav {
-        left: 0;
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        bottom: ($sidenav-closebtn-height + 34);
-        height: $sidenav-closebtn-height;
-        line-height: $sidenav-closebtn-height;
-    }
+
     & .profile {
         font-size: 14px;
         position: relative;
         padding: 1rem 1rem .25rem;
         margin-bottom: 5px;
+
         & .background {
             z-index: -1;
             position: absolute;
@@ -96,6 +51,7 @@
             left: 0;
             overflow: hidden;
         }
+
         & .avatar {
             & img {
                 display: block;
@@ -104,63 +60,53 @@
                 border-radius: $sidenav-avatar-radius;
             }
         }
+
         & .name {
             padding: 0 .1rem .5rem .1em;
             display: block;
             margin-top: 1em;
         }
+
         & .title {
             display: block;
             font-size: .9em;
             padding-bottom: 1em;
         }
     }
+
     .menu {
-      cursor: pointer;
-      padding: 0 1rem;
-      color: inherit;
-      height: 40px;
-      line-height: 40px;
-      display: block;
-      font-weight: 700;
-      @include transition('color .2s ease-in');
-      text-decoration: none;
+        cursor: pointer;
+        padding: 0 1rem;
+        color: inherit;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        font-weight: 700;
+        @include transition('color .2s ease-in');
+        text-decoration: none;
     }
 }
 
-@media only screen and (min-width: 1366px) {
+
+
+
+@media only screen and (min-width : 1366px) {
     #drag-target {
         width: 0px !important;
     }
-    .tw-sideNav {
+
+    .tw-side-nav {
+        visibility: visible;
+
         &.fixed {
-            @include transform("translateX(0%);") box-shadow: $sidenav-fixed-shadow;
+            @include transform("translateX(0%);");
+            box-shadow: $sidenav-fixed-shadow;
         }
     }
 }
 
-@media only screen and (max-width: 1366px) {
-    .tw-sideNav {
-        &.fixed {
-            @include transform(translateX(-100%));
-            box-shadow: $sidenav-shadow;
-        }
-    }
-}
-
-@media only screen and (min-width: 1366px) {
-    #drag-target {
-        width: 0px !important;
-    }
-    .tw-sideNav {
-        &.fixed {
-            @include transform("translateX(0%);") box-shadow: $sidenav-fixed-shadow;
-        }
-    }
-}
-
-@media only screen and (max-width: 1366px) {
-    .tw-sideNav {
+@media only screen and (max-width : 1366px) {
+    .tw-side-nav {
         &.fixed {
             @include transform(translateX(-100%));
             box-shadow: $sidenav-shadow;
